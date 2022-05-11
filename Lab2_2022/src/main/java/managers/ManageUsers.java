@@ -44,7 +44,7 @@ public class ManageUsers {
 	
 	/*Check if all the fields are filled correctly */
 	public boolean isComplete(User user) {
-	    return(hasValue(user.getUser()) &&
+	    return(hasValue(user.getUsername()) &&
 	    	   hasValue(user.getMail()) &&
 	    	   hasValue(user.getPwd1()) &&
 	           hasValue(user.getPwd2()) );
