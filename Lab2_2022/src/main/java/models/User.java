@@ -53,13 +53,23 @@ public class User implements java.io.Serializable {
 		//System.out.println(user);
 		//this.username = username;
 		
-		//verify uniqueness in DB
-		ManageUsers manager = new ManageUsers();
-		Boolean unique = manager.requestUniqueness("username", username);
+		String regex = "^[a-zA-Z\\d_]{1,10}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(username);
 		
-		if (unique) {
-			this.username = username;
-			System.out.println(username);
+		if (matcher.matches()) {
+			//verify uniqueness in DB
+			ManageUsers manager = new ManageUsers();
+			Boolean unique = manager.requestUniqueness("username", username);
+			
+			if (unique) {
+				this.username = username;
+				System.out.println(username);
+			} else {
+				error[0]=true;
+				System.out.println(username);
+			}
+			
 		} else {
 			error[0]=true;
 			System.out.println(username);
@@ -75,7 +85,8 @@ public class User implements java.io.Serializable {
 		String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(mail);
-		if (matcher.matches()) {
+		
+		if (matcher.matches() && mail.length() <= 50) {
 			
 			//verify uniqueness in DB
 			ManageUsers manager = new ManageUsers();
