@@ -4,23 +4,62 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel=”nofollow” integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
+
+
 <meta charset="UTF-8">
 <title> Form </title>
 <style>
+* {
+	margin-left: 10px;
+}
+
 input, select {
-	margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	margin-left: 20px;
 }
 
 input:valid {
-	border-left: 4px solid green;
+	border-left: 6px solid green;
 }
+
 input:invalid {
-	border-left: 4px solid red;
+	border-left: 6px solid red;
 }
 
 label {
-	font-weight:bold;
-	color:darkgrey;
+	font-weight: bold;
+	color: #444444;
+}
+
+button {
+	border-radius: 6px;
+	margin-left: 50px;
+	margin-top: 10px;
+	background-color: #3CAF40; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	transition-duration: 0.4s;
+}
+
+button:hover {
+  	background-color: #6CCF70; /* Green */
+  	color: white;
+}
+
+select {
+	border-radius: 6px;
+}
+
+select option{
+  	color: black;
 }
 
 </style>
@@ -35,7 +74,28 @@ label {
 	<li> Entered user name has been already registered </li>
 </c:if>
 <c:if test = "${model.error[1]}">
+	<li> Entered user name must contain only alphanumeric or underscore “_” special character and be as maximum 10 characters long </li>
+</c:if>
+<c:if test = "${model.error[2]}">
 	<li> Entered email has been already registered </li>
+</c:if>
+<c:if test = "${model.error[3]}">
+	<li> Entered email must be valid and less than 50 characters long </li>
+</c:if>
+<c:if test = "${model.error[4]}">
+	<li> Entered password must have between 8 and 50 characters, containing at least one lowercase, one uppercase, a number and a special character </li>
+</c:if>
+<c:if test = "${model.error[5]}">
+	<li> The password must match </li>
+</c:if>
+<c:if test = "${model.error[6]}">
+	<li> Nickname must be between 1 and 30 characters long </li>
+</c:if>
+<c:if test = "${model.error[7]}">
+	<li> Gender must be one of the options </li>
+</c:if>
+<c:if test = "${model.error[8]}">
+	<li> You must be +16 years-old to be able to register </li>
 </c:if>
 </ul>
 
@@ -58,7 +118,7 @@ label {
   	<option value="other">Other</option>
   </select><br>
   <label for="birth"> Date of birth:</label><br>
-  <input type="date" id="birth" name="birth" placeholder="Birth" value="${model.birth}" min="1900-01-01" max="2500-01-01"><br>
+  <input type="date" id="birth" name="birth" placeholder="Birth" value="${model.birth}" min="1900-01-01" max="2500-01-01" required pattern="^\d{4}-\d{2}-\d{2}$"><br>
   <button> Submit </button>
 </form>
 <script>
@@ -76,7 +136,6 @@ if ("${model.gender}".length > 0) {
 }
 
 if ("${model.birth}".length > 0) {
-	//var date = new Date("${model.birth}");
 	birth.value = (new Date("${model.birth}")).toISOString().substring(0,10);
 }
 

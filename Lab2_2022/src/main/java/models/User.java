@@ -64,16 +64,13 @@ public class User implements java.io.Serializable {
 			
 			if (unique) {
 				this.username = username;
-				System.out.println(username);
 			} else {
 				error[0]=true;
-				System.out.println(username);
 			}
-			
 		} else {
-			error[0]=true;
-			System.out.println(username);
+			error[1]=true;
 		}
+		System.out.println(username);
 	}
 	
 	public String getMail() {
@@ -94,16 +91,14 @@ public class User implements java.io.Serializable {
 			
 			if (unique) {
 				this.mail = mail;
-				System.out.println(mail);
 			} else {
-				error[1]=true;
-				System.out.println(mail);
+				error[2]=true;
 			}
 			
 		} else {
-			error[1]=true;
-			System.out.println(mail);
+			error[3]=true;
 		}
+		System.out.println(mail);
 		
 	}
 	
@@ -113,7 +108,15 @@ public class User implements java.io.Serializable {
 	
 	public void setPwd1(String pwd1) {
 		/* TODO check restriction with pattern */
-		this.pwd1 = pwd1;
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/ñÑçÇ#])[A-Za-z\\d@$!%?&_+\\-*\\/ñÑçÇ#]$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(pwd1);
+		
+		if (matcher.matches() && pwd1.length() >= 8 && pwd1.length() <= 50) {
+			this.pwd1 = pwd1;
+		} else {
+			error[4]=true;
+		}
 		System.out.println(pwd1);
 	}
 	
@@ -123,8 +126,17 @@ public class User implements java.io.Serializable {
 	
 	public void setPwd2(String pwd2) {
 		/* TODO check restriction with pattern and check if pwd1=pwd2*/
-		this.pwd2 = pwd2;
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/ñÑçÇ#])[A-Za-z\\d@$!%?&_+\\-*\\/ñÑçÇ#]$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(pwd2);
+		
+		if (matcher.matches() && pwd2.length() >= 8 && pwd2.length() <= 50 && pwd2.equals(pwd1)) {
+			this.pwd2 = pwd2;
+		} else {
+			error[5]=true;
+		}
 		System.out.println(pwd2);
+
 	}
 	
 	public String getNickname() {
@@ -135,8 +147,9 @@ public class User implements java.io.Serializable {
 		if(nickname.matches("^.{1,30}$")) {
 			this.nickname = nickname;
 		}else {
-			error[4] = true;
-		}	
+			error[6] = true;
+		}
+		System.out.println(nickname);
 	}
 
 	public String getGender() {
@@ -152,8 +165,9 @@ public class User implements java.io.Serializable {
 		if(options.contains(gender)) {
 			this.gender = gender;
 		}else {
-			error[5] = true;
+			error[7] = true;
 		}
+		System.out.println(gender);
 	}
 
 	public String getBirth() {
@@ -174,8 +188,9 @@ public class User implements java.io.Serializable {
 		if(diff >= 504910816000L) { //older than 16 years
 			this.birth = birth;			
 		} else {
-		    error[6] = true;
+		    error[8] = true;
 		}
+		System.out.println(birth);
 	}
 
 	public void setError(boolean[] error) {
