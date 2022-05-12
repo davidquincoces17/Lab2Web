@@ -38,7 +38,7 @@ public class RegisterController extends HttpServlet {
 		ManageUsers manager = new ManageUsers();
 		
 		String view = "RegisterForm.jsp";
-//		String view = "ConstrainedValidationHTML5.jsp";
+		//String view = "ConstrainedValidationHTML5.jsp";
 		//String view = "ConstrainedValidationSimple.jsp";
 		//String view = "ConstrainedValidationComplex.jsp";
 		//String view = "ConstrainedValidationParsley.jsp";
@@ -46,7 +46,7 @@ public class RegisterController extends HttpServlet {
 		try {
 			BeanUtils.populate(model,request.getParameterMap());
 			if (manager.isComplete(model)) {
-				manager.addUser(model.getUsername(), model.getMail(), model.getPwd1());
+				manager.addUser(model.getUsername(), model.getMail(), model.getPwd1(), model.getNickname(), model.getGender(), model.getBirth());
 				manager.finalize();
 				view = "Registered.jsp";
 			}

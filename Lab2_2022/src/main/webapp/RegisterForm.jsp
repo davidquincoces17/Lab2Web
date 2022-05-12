@@ -21,6 +21,9 @@ input:invalid {
 <c:if test = "${model.error[0]}">
 	<li> Entered user name has been already registered </li>
 </c:if>
+<c:if test = "${model.error[1]}">
+	<li> Entered email has been already registered </li>
+</c:if>
 </ul>
 
 <form action="RegisterController" id="myform">

@@ -10,7 +10,7 @@ public class DB {
 		
 		// WITHOUT POOL
 		String user = "mysql";
-		String password="prac";
+		String password = "prac";
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		connection=DriverManager.getConnection("jdbc:mysql://localhost/lab2?serverTimezone=UTC&user="+user+"&password="+password);
 

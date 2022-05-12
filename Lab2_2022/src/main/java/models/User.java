@@ -1,5 +1,7 @@
 package models;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +10,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import managers.ManageUsers;
 
 public class User implements java.io.Serializable {
 	
@@ -45,10 +48,22 @@ public class User implements java.io.Serializable {
 	public void setUsername(String username) {
 		/* We can simulate that a user with the same name exists in our DB and mark error[0] as true  */
 		//TODO: regex
-		error[0] = true;
+		//error[0] = true;
 		//this.user = user;
 		//System.out.println(user);
-//		this.username = username;
+		//this.username = username;
+		
+		//verify uniqueness in DB
+		ManageUsers manager = new ManageUsers();
+		Boolean unique = manager.requestUniqueness("username", username);
+		
+		if (unique) {
+			this.username = username;
+			System.out.println(username);
+		} else {
+			error[0]=true;
+			System.out.println(username);
+		}
 	}
 	
 	public String getMail() {
@@ -61,8 +76,19 @@ public class User implements java.io.Serializable {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(mail);
 		if (matcher.matches()) {
-			this.mail = mail;
-			System.out.println(mail);
+			
+			//verify uniqueness in DB
+			ManageUsers manager = new ManageUsers();
+			Boolean unique = manager.requestUniqueness("mail", mail);
+			
+			if (unique) {
+				this.mail = mail;
+				System.out.println(mail);
+			} else {
+				error[1]=true;
+				System.out.println(mail);
+			}
+			
 		} else {
 			error[1]=true;
 			System.out.println(mail);
