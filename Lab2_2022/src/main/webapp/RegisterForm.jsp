@@ -77,7 +77,7 @@ select option{
 </head>
 <body>
 
-<h1>Funnier</h1>
+<img src="imgs/FunnierSmall.png" alt= "logo" style="height:100px;">
 <h2>Registration:</h2>
 
 <div class="errors">
