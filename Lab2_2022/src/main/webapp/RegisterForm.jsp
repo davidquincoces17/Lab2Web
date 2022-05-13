@@ -47,6 +47,7 @@ button {
 	display: inline-block;
 	font-size: 16px;
 	transition-duration: 0.4s;
+  	margin-bottom:30px;
 }
 
 button:hover {
@@ -62,6 +63,16 @@ select option{
   	color: black;
 }
 
+.errors{
+	color: white;
+	font-weight:bold;
+  	background-color: #EC2A57;
+  	padding: 5px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	border:3px solid black;
+}
+
 </style>
 </head>
 <body>
@@ -69,35 +80,39 @@ select option{
 <h1>Funnier</h1>
 <h2>Registration:</h2>
 
-<ul>
-<c:if test = "${model.error[0]}">
-	<li> Entered user name has been already registered </li>
-</c:if>
-<c:if test = "${model.error[1]}">
-	<li> Entered user name must contain only alphanumeric or underscore “_” special character and be as maximum 10 characters long </li>
-</c:if>
-<c:if test = "${model.error[2]}">
-	<li> Entered email has been already registered </li>
-</c:if>
-<c:if test = "${model.error[3]}">
-	<li> Entered email must be valid and less than 50 characters long </li>
-</c:if>
-<c:if test = "${model.error[4]}">
-	<li> Entered password must have between 8 and 50 characters, containing at least one lowercase, one uppercase, a number and a special character </li>
-</c:if>
-<c:if test = "${model.error[5]}">
-	<li> The password must match </li>
-</c:if>
-<c:if test = "${model.error[6]}">
-	<li> Nickname must be between 1 and 30 characters long </li>
-</c:if>
-<c:if test = "${model.error[7]}">
-	<li> Gender must be one of the options </li>
-</c:if>
-<c:if test = "${model.error[8]}">
-	<li> You must be +16 years-old to be able to register </li>
-</c:if>
-</ul>
+<div class="errors">
+	<ul>
+	<c:if test = "${model.error[0]}">
+		<li> Entered user name has been already registered </li>
+	</c:if>
+	<c:if test = "${model.error[1]}">
+		<li> Entered user name must contain only alphanumeric or underscore “_” special character and be as maximum 10 characters long </li>
+	</c:if>
+	<c:if test = "${model.error[2]}">
+		<li> Entered email has been already registered </li>
+	</c:if>
+	<c:if test = "${model.error[3]}">
+		<li> Entered email must be valid and less than 50 characters long </li>
+	</c:if>
+	<c:if test = "${model.error[4]}">
+		<li> Entered password must have between 8 and 50 characters, containing at least one lowercase, one uppercase, a number and a special character </li>
+	</c:if>
+	<c:if test = "${model.error[5]}">
+		<li> The password must match </li>
+	</c:if>
+	<c:if test = "${model.error[6]}">
+		<li> Nickname must be between 1 and 30 characters long </li>
+	</c:if>
+	<c:if test = "${model.error[7]}">
+		<li> Gender must be one of the options </li>
+	</c:if>
+	<c:if test = "${model.error[8]}">
+		<li> You must be +16 years-old to be able to register </li>
+	</c:if>
+	</ul>
+
+</div>
+
 
 <form action="RegisterController" method="post" id="myform">
   <label for="username"> User name:</label><br>
@@ -105,7 +120,7 @@ select option{
   <label for="mail"> Mail:</label><br>
   <input type="email" id="mail" name="mail" placeholder="Mail" onfocusout="checkUniqueness('mail')" value="${model.mail}" required pattern="^.{8,50}$"><br>
   <label for="pwd1"> Password: </label><br>
-  <input type="password" id="pwd1" name="pwd1" placeholder="Password" value="${model.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&_+\-*\/ñÑçÇ#])[A-Za-z\d@$!%?&_+\-*\/ñÑçÇ#]{8,50}$"><br>
+  <input type="password" id="pwd1" name="pwd1" placeholder="Password" value="${model.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&_+\-*\/#])[A-Za-z\d@$!%?&_+\-*\/#]{8,50}$"><br>
   <label for="pwd2"> Confirm Password: </label><br>
   <input type="password" id="pwd2" name="pwd2" placeholder="Confirm Password" value="${model.pwd2}" required><br>
   <label for="nickname"> Nickname:</label><br>
@@ -166,7 +181,7 @@ var checkUniqueness = function(inputID) {
            		return;
            	}
            	if(uniqueness == "not-unique") {
-           		input.setCustomValidity("Value already registered, use another" + inputID);
+           		input.setCustomValidity("Value already registered, use another " + inputID);
            		return;
            	}
         }

@@ -35,7 +35,7 @@ public class User implements java.io.Serializable {
 	private String gender = "";
 	private String birth = "";
 	
-	private boolean[] error = {false,false,false,false,false,false,false};
+	private boolean[] error = {false,false,false,false,false,false,false,false,false};
 	
 	public User() {
 		
@@ -108,7 +108,7 @@ public class User implements java.io.Serializable {
 	
 	public void setPwd1(String pwd1) {
 		/* TODO check restriction with pattern */
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/Ò—Á«#])[A-Za-z\\d@$!%?&_+\\-*\\/Ò—Á«#]{8,50}$";
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/#])[A-Za-z\\d@$!%?&_+\\-*\\/#]{8,50}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(pwd1);
 		
@@ -126,7 +126,7 @@ public class User implements java.io.Serializable {
 	
 	public void setPwd2(String pwd2) {
 		/* TODO check restriction with pattern and check if pwd1=pwd2*/
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/Ò—Á«#])[A-Za-z\\d@$!%?&_+\\-*\\/Ò—Á«#]{8,50}$";
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/#])[A-Za-z\\d@$!%?&_+\\-*\\/#]{8,50}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(pwd2);
 		

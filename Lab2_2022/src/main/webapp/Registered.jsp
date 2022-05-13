@@ -7,7 +7,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
+<style>
+h2 {
+	font-weight:bold;
+	color:darkgrey;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+</style>
+
 <body>
-User ${model.username} has been registered correctly.
+	<h2> ${model.username} has been registered correctly! </h2>
 </body>
 </html>
