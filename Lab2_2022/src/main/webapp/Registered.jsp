@@ -19,6 +19,7 @@ h2 {
 </style>
 
 <body>
+	<img src="imgs/FunnierSmall.png" alt= "logo" style="height:80px;">
 	<h2> ${model.username} has been registered correctly! </h2>
 </body>
 </html>
