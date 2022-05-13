@@ -101,9 +101,9 @@ select option{
 
 <form action="RegisterController" method="post" id="myform">
   <label for="username"> User name:</label><br>
-  <input type="text" id="username" name="username" placeholder="Name" value="${model.username}" required pattern="^[a-zA-Z\d_]{1,10}$"><br>
+  <input type="text" id="username" name="username" placeholder="Name" onfocusout="checkUniqueness('username')" value="${model.username}" required pattern="^[a-zA-Z\d_]{1,10}$"><br>
   <label for="mail"> Mail:</label><br>
-  <input type="email" id="mail" name="mail" placeholder="Mail" value="${model.mail}" required pattern="^.{8,50}$"><br>
+  <input type="email" id="mail" name="mail" placeholder="Mail" onfocusout="checkUniqueness('mail')" value="${model.mail}" required pattern="^.{8,50}$"><br>
   <label for="pwd1"> Password: </label><br>
   <input type="password" id="pwd1" name="pwd1" placeholder="Password" value="${model.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&_+\-*\/ñÑçÇ#])[A-Za-z\d@$!%?&_+\-*\/ñÑçÇ#]{8,50}$"><br>
   <label for="pwd2"> Confirm Password: </label><br>
@@ -125,6 +125,7 @@ select option{
 
 
 const form = document.getElementById("myform");
+const username = document.getElementById("username");
 const email = document.getElementById("mail");
 const pwd1 = document.getElementById("pwd1");
 const pwd2 = document.getElementById("pwd2");
@@ -145,6 +146,34 @@ var checkPasswordValidity = function() {
 	} else {
 		pwd2.setCustomValidity("");
 	}
+}
+
+var checkUniqueness = function(inputID) {
+	var input;
+	if(inputID == "username")
+		input = username;
+	else if(inputID == "mail")
+		input = email;
+	else
+		return;
+	
+	var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            uniqueness = this.response;
+           	if(uniqueness == "unique"){
+				input.setCustomValidity("");           		
+           		return;
+           	}
+           	if(uniqueness == "not-unique") {
+           		input.setCustomValidity("Value already registered, use another" + inputID);
+           		return;
+           	}
+        }
+    };
+    xhttp.open("GET", "CheckUniquenessController?columnName="+inputID+"&columnValue="+input.value, true);
+    //xhttp.send(JSON.stringify({"columnName": inputID, "columnValue": input.value}));
+    xhttp.send();
 }
 
 email.addEventListener("input", function (event) {

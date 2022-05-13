@@ -108,7 +108,7 @@ public class User implements java.io.Serializable {
 	
 	public void setPwd1(String pwd1) {
 		/* TODO check restriction with pattern */
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/Ã±Ã‘Ã§Ã‡#])[A-Za-z\\d@$!%?&_+\\-*\\/Ã±Ã‘Ã§Ã‡#]$";
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/ñÑçÇ#])[A-Za-z\\d@$!%?&_+\\-*\\/ñÑçÇ#]{8,50}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(pwd1);
 		
@@ -126,7 +126,7 @@ public class User implements java.io.Serializable {
 	
 	public void setPwd2(String pwd2) {
 		/* TODO check restriction with pattern and check if pwd1=pwd2*/
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/Ã±Ã‘Ã§Ã‡#])[A-Za-z\\d@$!%?&_+\\-*\\/Ã±Ã‘Ã§Ã‡#]$";
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&_+\\-*\\/ñÑçÇ#])[A-Za-z\\d@$!%?&_+\\-*\\/ñÑçÇ#]{8,50}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(pwd2);
 		
