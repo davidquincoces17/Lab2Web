@@ -63,7 +63,7 @@ select option{
   	color: black;
 }
 
-.errors{
+#errors{
 	color: white;
 	font-weight:bold;
   	background-color: #EC2A57;
@@ -80,7 +80,8 @@ select option{
 <img src="imgs/FunnierSmall.png" alt= "logo" style="height:100px;">
 <h2>Registration:</h2>
 
-<div class="errors">
+
+<div id="errors">
 	<ul>
 	<c:if test = "${model.error[0]}">
 		<li> Entered user name has been already registered </li>
@@ -112,7 +113,6 @@ select option{
 	</ul>
 
 </div>
-
 
 <form action="RegisterController" method="post" id="myform">
   <label for="username"> User name:</label><br>
@@ -153,6 +153,20 @@ if ("${model.gender}".length > 0) {
 
 if ("${model.birth}".length > 0) {
 	birth.value = (new Date("${model.birth}")).toISOString().substring(0,10);
+}
+
+var errors = function() {
+	for(e of "${model.error}") {
+		if (e == true)
+			return true;
+	}
+	return false;
+}
+
+if (!errors()) {
+	document.getElementById("errors").style.display = 'none';
+} else {
+	document.getElementById("errors").style.display = 'block';	
 }
 
 var checkPasswordValidity = function() {
