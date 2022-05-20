@@ -53,6 +53,8 @@ public class RegisterController extends HttpServlet {
 			   request.setAttribute("user",user);
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("ViewRegisterForm.jsp");
 			   dispatcher.forward(request, response);
+			   
+			   
 		   }
 	   
 	   } catch (IllegalAccessException | InvocationTargetException e) {
