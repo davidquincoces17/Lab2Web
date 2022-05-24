@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
+<img src="imgs/FunnierSmall.png" alt= "logo" style="height:80px; margin-bottom:20px">
 
 
 <div id="errors">
