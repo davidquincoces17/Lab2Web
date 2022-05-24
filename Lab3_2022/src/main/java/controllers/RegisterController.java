@@ -37,7 +37,7 @@ public class RegisterController extends HttpServlet {
 		User model = new User();
 		ManageUsers manager = new ManageUsers();
 		
-		String view = "RegisterForm.jsp";
+		String view = "ViewRegisterForm.jsp";
 		//String view = "ConstrainedValidationHTML5.jsp";
 		//String view = "ConstrainedValidationSimple.jsp";
 		//String view = "ConstrainedValidationComplex.jsp";
