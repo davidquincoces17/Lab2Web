@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="imgs/me.png">
+<link rel="icon" href="imgs/favicon_funnier.png">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title> Lab 3 template </title>
+<title> Lab 3 FUNNIER </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
