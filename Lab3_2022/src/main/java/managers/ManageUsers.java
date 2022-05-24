@@ -13,7 +13,7 @@ public class ManageUsers {
 	
 	public ManageUsers() {
 		try {
-			db = new DB();
+			db = DB.getDB();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
