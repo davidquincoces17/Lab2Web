@@ -24,6 +24,14 @@
 
 
 <script>
+var errors = function() {
+	for(e of "${login.error}") {
+		if (e == true)
+			return true;
+	}
+	return false;
+}
+
 if (!errors()) {
 	document.getElementById("errors").style.display = 'none';
 } else {
