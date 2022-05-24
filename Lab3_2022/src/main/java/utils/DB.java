@@ -4,9 +4,10 @@ import java.sql.*;
 
 public class DB {
 	
+	private static DB db = null;
 	private Connection connection = null;
 	
-	public DB() throws Exception {
+	private DB() throws Exception {
 		
 		// WITHOUT POOL
 		String user = "mysql";
@@ -16,8 +17,13 @@ public class DB {
 
 	}
 	
-	//execute queries
+	public static DB getDB() throws Exception {
+		if (db == null) 
+			db = new DB();
+		return db;
+	}
 	
+	//execute queries
 	public PreparedStatement prepareStatement(String query) throws SQLException{
 		// Note that this is done using https://www.arquitecturajava.com/jdbc-prepared-statement-y-su-manejo/
 		return connection.prepareStatement(query);
@@ -25,5 +31,6 @@ public class DB {
 	
 	public void disconnectBD() throws SQLException{
 		connection.close();
+		db = null;
 	}
 }

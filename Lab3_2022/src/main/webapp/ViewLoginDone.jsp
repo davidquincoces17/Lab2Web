@@ -5,4 +5,4 @@
 $('#navigation').load('MenuController');
 </script>
 
-Login for user ${sessionScope.user} done!
+Login for user ${sessionScope.mail} done!

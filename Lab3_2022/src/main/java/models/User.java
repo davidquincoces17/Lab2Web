@@ -112,7 +112,7 @@ public class User implements java.io.Serializable {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(pwd1);
 		
-		if (matcher.matches() && pwd1.length() >= 8 && pwd1.length() <= 50) {
+		if (matcher.matches()) {
 			this.pwd1 = pwd1;
 		} else {
 			error[4]=true;
@@ -130,7 +130,7 @@ public class User implements java.io.Serializable {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(pwd2);
 		
-		if (matcher.matches() && pwd2.length() >= 8 && pwd2.length() <= 50 && pwd2.equals(pwd1)) {
+		if (matcher.matches() && pwd2.equals(pwd1)) {
 			this.pwd2 = pwd2;
 		} else {
 			error[5]=true;

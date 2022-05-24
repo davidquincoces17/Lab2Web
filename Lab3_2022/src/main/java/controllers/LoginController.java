@@ -42,8 +42,7 @@ public class LoginController extends HttpServlet {
 			
 	    	BeanUtils.populate(login, request.getParameterMap());
 			
-	    	if (login.isComplete()) {
-		    	
+	    	if (login.isComplete() && login.canLogin()) {
 	    		System.out.println("login OK, forwarding to ViewLoginDone ");
 		    	HttpSession session = request.getSession();
 		    	session.setAttribute("mail",login.getMail());
