@@ -39,10 +39,25 @@ $(document).ready(function(){
  	<!-- End Navigation -->
  
 	<!-- Begin Content -->
-	<div class="w3-container w3-card-4 w3-padding-24" id="content">
-	<jsp:include page="${content}" />
+	<div class="w3-row-padding">
+	 	<!-- Left Column -->
+		<div class="w3-container w3-col m3 w3-hide-small">
+			<div id="lcolumn">
+				<p></p>
+			</div>
+		</div>
+		<!-- Middle Column -->	
+		<div class="e3-container w3-col m8">
+			<div id="content">
+			<jsp:include page="${content}" />
+			</div>
+		</div>
 	</div>
 	<!-- End Content -->
+	<!-- Footer -->
+	<footer class="w3-container w3-theme">
+	  <p> Universitat Pompeu Fabra </p>
+	</footer>
 	
 	<script>
 		function stack() {

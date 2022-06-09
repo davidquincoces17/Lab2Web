@@ -27,6 +27,7 @@ public class User implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private Integer id;
 	private String username = "";
 	private String mail = "";
 	private String pwd1 = "";
@@ -39,6 +40,14 @@ public class User implements java.io.Serializable {
 	
 	public User() {
 		
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	public String getUsername() {

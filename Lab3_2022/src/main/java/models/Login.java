@@ -55,39 +55,6 @@ public class Login {
 	    return(hasValue(getMail()) && hasValue(getPass()));
 	}
 	
-	public boolean canLogin() {
-		String query = "SELECT * FROM users WHERE mail='" + this.mail + "' AND pwd='"+ this.pass + "'";
-
-		PreparedStatement statement = null;
-		
-		DB db = null ;
-		
-		try {
-			db = DB.getDB();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		boolean can = false;
-		
-		try {
-			statement = db.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-			Boolean bool = result.next(); //found a matching element
-			statement.close();
-			can = bool;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			can = false;
-		}
-		
-		if (!can) {
-			error[1] = true;
-			mail = "";
-			pass = "";
-		}
-		return can;
-	}
 	
 	private boolean hasValue(String val) {
 		return((val != null) && (!val.equals("")));

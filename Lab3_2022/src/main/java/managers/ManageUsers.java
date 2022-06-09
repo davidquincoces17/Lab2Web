@@ -3,6 +3,10 @@ package managers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 import models.User;
 import utils.DB;
@@ -46,6 +50,57 @@ public class ManageUsers {
 		}
 	}
 	
+
+	/* Get a user given its PK*/
+	public User getUser(Integer id) {
+		String query = "SELECT id,name,mail FROM users WHERE id = ? ;";
+		PreparedStatement statement = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			statement = db.prepareStatement(query);
+			statement.setInt(1,id);
+			rs = statement.executeQuery();
+			if (rs.next()) {
+				user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setMail(rs.getString("mail"));
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
+	
+	
+	// Get all the users
+	public List<User> getUsers(Integer start, Integer end) {
+		 String query = "SELECT id,name FROM users ORDER BY name ASC LIMIT ?,?;";
+		 PreparedStatement statement = null;
+		 List<User> l = new ArrayList<User>();
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,start);
+			 statement.setInt(2,end);
+			 ResultSet rs = statement.executeQuery();
+			 while (rs.next()) {
+				 User user = new User();
+				 user.setId(rs.getInt("id"));
+				 user.setUsername(rs.getString("username"));
+				 l.add(user);
+			 }
+			 rs.close();
+			 statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return  l;
+	}
+	
 	/*Check if all the fields are filled correctly */
 	public boolean isComplete(User user) {
 	    return(hasValue(user.getUsername()) &&
@@ -56,6 +111,49 @@ public class ManageUsers {
 	           hasValue(user.getGender()) &&
 	           hasValue(user.getBirth()) );
 	}
+	
+	/*Check if all the fields for Login are filled correctly */
+	public boolean isLoginComplete(User user) {
+	    return(hasValue(user.getMail()) &&
+	    	   hasValue(user.getPwd1()) );
+	}
+	
+	
+	/*Check if user can login */
+	public Pair<Boolean,User> canLogin(User user) {
+		String query = "SELECT * FROM users WHERE mail='" + user.getMail() + "' AND pwd='"+ user.getPwd1() + "'";
+
+		PreparedStatement statement = null;
+		
+		DB db = null ;
+		
+		try {
+			db = DB.getDB();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		boolean can = false;
+		
+		try {
+			statement = db.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				user.setId(result.getInt("id"));
+				user.setMail(result.getString("mail"));
+				can = true;
+			}
+			
+			result.close();
+			statement.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			can = false;
+		}
+		
+		return Pair.of(can, user);
+	}
+	
 	
 	private boolean hasValue(String val) {
 		return((val != null) && (!val.equals("")));
