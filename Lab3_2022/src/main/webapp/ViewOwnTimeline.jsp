@@ -6,11 +6,12 @@
 	$('#navigation').load('MenuController');
 	$('#lcolumn').load('GetUserInfo');
 	//$('#iterator').load('GetUserTweets');
+	
  });
 </script>
 
 <div class="w3-container w3-card w3-round w3-white w3-section">
-	<h6 class="w3-opacity"> ${user.name}, what are you thinking? </h6>
+	<h6 class="w3-opacity"> Hello ${user.username}, would you like to share some Funny? </h6>
 	<p id="tweetContent" contenteditable="true" class="w3-border w3-padding"> </p>
 	<button id="addTweet" type="button" class="w3-button w3-theme w3-section"><i class="fa fa-pencil"></i> &nbsp;Post</button> 
 </div>

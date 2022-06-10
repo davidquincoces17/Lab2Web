@@ -55,7 +55,7 @@ public class ManageUsers {
 
 	/* Get a user given its PK*/
 	public User getUser(Integer id) {
-		String query = "SELECT id,name,mail FROM user WHERE id = ? ;";
+		String query = "SELECT id,username,email FROM user WHERE id = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -67,7 +67,7 @@ public class ManageUsers {
 				user = new User();
 				user.setId(rs.getInt("id"));
 				user.setUsername(rs.getString("username"));
-				user.setMail(rs.getString("mail"));
+				user.setMail(rs.getString("email"));
 			}
 			rs.close();
 			statement.close();
@@ -81,7 +81,7 @@ public class ManageUsers {
 	
 	// Get all the users
 	public List<User> getUsers(Integer start, Integer end) {
-		 String query = "SELECT id,name FROM user ORDER BY name ASC LIMIT ?,?;";
+		 String query = "SELECT id,username FROM user ORDER BY username ASC LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {
@@ -143,6 +143,7 @@ public class ManageUsers {
 			if (result.next()) {
 				user.setId(result.getInt("id"));
 				user.setMail(result.getString("email"));
+				user.setUsername(result.getString("username"));
 				can = true;
 			} else {
 				boolean[] myErrors = user.getError();

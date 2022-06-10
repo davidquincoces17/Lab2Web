@@ -73,11 +73,12 @@ public class User implements java.io.Serializable {
 			ManageUsers manager = new ManageUsers();
 			Boolean unique = manager.requestUniqueness("username", username);
 			
-			if (unique) {
-				this.username = username;
-			} else {
+			this.username = username;
+			
+			if (!unique) {
 				error[0]=true;
 			}
+			
 		} else {
 			error[1]=true;
 		}
@@ -98,14 +99,13 @@ public class User implements java.io.Serializable {
 			
 			//verify uniqueness in DB
 			ManageUsers manager = new ManageUsers();
-			//Boolean unique = manager.requestUniqueness("mail", mail);
+			Boolean unique = manager.requestUniqueness("email", mail);
 
 			this.mail = mail;
-//			if (unique) {
-//				this.mail = mail;
-//			} else {
-//				error[2]=true;
-//			}
+			
+			if (!unique) {
+				error[2]=true;
+			}
 			
 		} else {
 			error[3]=true;

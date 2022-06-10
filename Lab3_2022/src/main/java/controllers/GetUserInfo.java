@@ -33,7 +33,7 @@ public class GetUserInfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
-		User user = (User) session.getAttribute("mail");
+		User user = (User) session.getAttribute("user");
 		
 		if (session != null || user != null) {
 			ManageUsers userManager = new ManageUsers();
