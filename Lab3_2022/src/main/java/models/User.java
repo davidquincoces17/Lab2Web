@@ -170,10 +170,10 @@ public class User implements java.io.Serializable {
 
 	public void setGender(String gender) {
 		ArrayList<String> options = new ArrayList<String>();
-		options.add("male");
-		options.add("female");
-		options.add("notsay");
-		options.add("other");
+		options.add("1");
+		options.add("2");
+		options.add("3");
+		options.add("4");
 		if(options.contains(gender)) {
 			this.gender = gender;
 		}else {

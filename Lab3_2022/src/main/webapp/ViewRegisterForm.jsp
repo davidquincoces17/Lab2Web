@@ -22,10 +22,10 @@
   <input class="w3-input w3-border w3-light-grey" type="text" id="nickname" name="nickname" placeholder="Nickname" value="${model.nickname}" required pattern="^.{1,30}$"><br>
   <label class="w3-text-red" for="gender"> Gender:</label><br>
   <select class="w3-select" id="gender" name="gender">
-  	<option value="male">Male</option>
-  	<option value="female">Female</option>
-  	<option value="notsay">Prefer not to say</option>
-  	<option value="other">Other</option>
+  	<option value="1">Male</option>
+  	<option value="2">Female</option>
+  	<option value="3">Prefer not to say</option>
+  	<option value="4">Other</option>
   </select><br><br>
   <label class="w3-text-red" for="birth"> Date of birth:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="date" id="birth" name="birth" placeholder="Birth" value="${model.birth}" min="1900-01-01" max="2500-01-01" required pattern="^\d{4}-\d{2}-\d{2}$"><br>

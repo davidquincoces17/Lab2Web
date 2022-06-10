@@ -46,7 +46,7 @@ public class RegisterController extends HttpServlet {
 		try {
 			BeanUtils.populate(model,request.getParameterMap());
 			if (manager.isComplete(model)) {
-				manager.addUser(model.getUsername(), model.getMail(), model.getPwd1(), model.getNickname(), model.getGender(), model.getBirth());
+				manager.addUser(model.getUsername(), model.getMail(), model.getPwd1(), model.getNickname(), model.getGender(), model.getBirth(), model.getProfilePhoto(), model.isAdmin());
 				manager.finalize();
 				view = "ViewLoginForm.jsp";
 			}

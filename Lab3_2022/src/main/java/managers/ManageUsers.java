@@ -32,8 +32,8 @@ public class ManageUsers {
 	}
 		
 	// Add new user
-	public void addUser(String username, String mail, String pwd, String nickname, String gender, String birth) {
-		String query = "INSERT INTO users (username,email,password,nickname,gender,birth) VALUES (?,?,?,?,?,?)";
+	public void addUser(String username, String mail, String pwd, String nickname, String gender, String birth, String profilePhoto, boolean isAdmin) {
+		String query = "INSERT INTO user (username,email,password,nickname,gender,birth,profilePhoto,isAdmin) VALUES (?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
@@ -41,8 +41,10 @@ public class ManageUsers {
 			statement.setString(2,mail);
 			statement.setString(3,pwd);
 			statement.setString(4,nickname);
-			statement.setString(5,gender);
+			statement.setInt(5,Integer.parseInt(gender));
 			statement.setString(6,birth);
+			statement.setString(7, profilePhoto);
+			statement.setBoolean(8, isAdmin);
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
@@ -53,7 +55,7 @@ public class ManageUsers {
 
 	/* Get a user given its PK*/
 	public User getUser(Integer id) {
-		String query = "SELECT id,name,mail FROM users WHERE id = ? ;";
+		String query = "SELECT id,name,mail FROM user WHERE id = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -79,7 +81,7 @@ public class ManageUsers {
 	
 	// Get all the users
 	public List<User> getUsers(Integer start, Integer end) {
-		 String query = "SELECT id,name FROM users ORDER BY name ASC LIMIT ?,?;";
+		 String query = "SELECT id,name FROM user ORDER BY name ASC LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {
@@ -122,7 +124,7 @@ public class ManageUsers {
 	
 	/*Check if user can login */
 	public Pair<Boolean,User> canLogin(User user) {
-		String query = "SELECT * FROM users WHERE email='" + user.getMail() + "' AND password='"+ user.getPwd1() + "'";
+		String query = "SELECT * FROM user WHERE email='" + user.getMail() + "' AND password='"+ user.getPwd1() + "'";
 
 		PreparedStatement statement = null;
 		
@@ -171,7 +173,7 @@ public class ManageUsers {
 	
 	// Request if parameter is unique
 	public boolean requestUniqueness(String attribute, String value) {
-		String query = "SELECT * FROM users WHERE " + attribute + "='" + value + "'";
+		String query = "SELECT * FROM user WHERE " + attribute + "='" + value + "'";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
