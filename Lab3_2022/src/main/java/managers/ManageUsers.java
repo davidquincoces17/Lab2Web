@@ -164,10 +164,37 @@ public class ManageUsers {
 	}
 	
 	
+	public List<User> getNotFollowedUsers(Integer id, Integer start, Integer end) {
+		 String query = "SELECT id,username,nickname,profilePhoto FROM user WHERE id NOT IN (SELECT id FROM user,follow WHERE id = fid AND uid = ?) AND id <> ? ORDER BY username LIMIT ?,?;";
+		 PreparedStatement statement = null;
+		 List<User> l = new ArrayList<User>();
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,id);
+			 statement.setInt(2, id);
+			 statement.setInt(3,start);
+			 statement.setInt(4,end);
+			 ResultSet rs = statement.executeQuery();
+			 while (rs.next()) {
+				 User user = new User();
+				 user.setId(rs.getInt("id"));
+				 user.setUsername(rs.getString("username"));
+				 user.setNickname(rs.getString("nickname"));
+				 l.add(user);
+			 }
+			 rs.close();
+			 statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return  l;
+	}
+	
+	
 	private boolean hasValue(String val) {
 		return((val != null) && (!val.equals("")));
 	}
-		
+	
 	
 	// TODO: add other methods 
 	/*Check if all the fields are filled correctly */

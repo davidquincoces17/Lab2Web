@@ -4,7 +4,9 @@
  <script type="text/javascript">
  $(document).ready(function(){
 	$('#navigation').load('MenuController');
-	$('#lcolumn').load('GetUserInfo');
+	$('#lrow1').load('GetUserInfo');
+	$('#lrow2').load('GetNotFollowedUsers');
+	
 	//$('#iterator').load('GetUserTweets');
 	
  });

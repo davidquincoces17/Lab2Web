@@ -43,8 +43,14 @@ $(document).ready(function(){
 	 	<!-- Left Column -->
 		<div class="w3-container w3-col m3 w3-hide-small">
 			<div id="lcolumn">
-				<p></p>
+				<div id="lrow1">
+					<p></p>
+				</div>
+				<div id="lrow2">
+					<p></p>
+				</div>
 			</div>
+			
 		</div>
 		<!-- Middle Column -->	
 		<div class="e3-container w3-col m8">

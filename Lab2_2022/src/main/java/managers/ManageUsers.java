@@ -67,7 +67,7 @@ public class ManageUsers {
 	
 	// Request if parameter is unique
 	public boolean requestUniqueness(String attribute, String value) {
-		String query = "SELECT * FROM users WHERE " + attribute + "='" + value + "'";
+		String query = "SELECT * FROM user WHERE " + attribute + "='" + value + "'";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
