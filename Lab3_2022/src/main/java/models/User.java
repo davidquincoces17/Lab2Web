@@ -35,8 +35,10 @@ public class User implements java.io.Serializable {
 	private String nickname = "";
 	private String gender = "";
 	private String birth = "";
+	private String profilePhoto = "";
+	private boolean isAdmin = false;
 	
-	private boolean[] error = {false,false,false,false,false,false,false,false,false};
+	private boolean[] error = {false,false,false,false,false,false,false,false,false,false};
 	
 	public User() {
 		
@@ -96,13 +98,14 @@ public class User implements java.io.Serializable {
 			
 			//verify uniqueness in DB
 			ManageUsers manager = new ManageUsers();
-			Boolean unique = manager.requestUniqueness("mail", mail);
-			
-			if (unique) {
-				this.mail = mail;
-			} else {
-				error[2]=true;
-			}
+			//Boolean unique = manager.requestUniqueness("mail", mail);
+
+			this.mail = mail;
+//			if (unique) {
+//				this.mail = mail;
+//			} else {
+//				error[2]=true;
+//			}
 			
 		} else {
 			error[3]=true;
@@ -202,6 +205,22 @@ public class User implements java.io.Serializable {
 		System.out.println(birth);
 	}
 
+	public String getProfilePhoto() {
+		return profilePhoto;
+	}
+
+	public void setProfilePhoto(String profilePhoto) {
+		this.profilePhoto = profilePhoto;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+	
 	public void setError(boolean[] error) {
 		this.error = error;
 	}
@@ -215,5 +234,7 @@ public class User implements java.io.Serializable {
 		return "User [username=" + username + ", mail=" + mail + ", pwd1=" + pwd1 + ", pwd2=" + pwd2 + ", nickname=" + nickname
 				+ ", gender=" + gender + ", birth=" + birth + ", error=" + Arrays.toString(error) + "]";
 	}
+
+
 		
 }

@@ -33,7 +33,7 @@ public class ManageUsers {
 		
 	// Add new user
 	public void addUser(String username, String mail, String pwd, String nickname, String gender, String birth) {
-		String query = "INSERT INTO users (username,mail,pwd,nickname,gender,birth) VALUES (?,?,?,?,?,?)";
+		String query = "INSERT INTO users (username,email,password,nickname,gender,birth) VALUES (?,?,?,?,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
@@ -114,6 +114,7 @@ public class ManageUsers {
 	
 	/*Check if all the fields for Login are filled correctly */
 	public boolean isLoginComplete(User user) {
+		System.out.println(user);
 	    return(hasValue(user.getMail()) &&
 	    	   hasValue(user.getPwd1()) );
 	}
@@ -121,7 +122,7 @@ public class ManageUsers {
 	
 	/*Check if user can login */
 	public Pair<Boolean,User> canLogin(User user) {
-		String query = "SELECT * FROM users WHERE mail='" + user.getMail() + "' AND pwd='"+ user.getPwd1() + "'";
+		String query = "SELECT * FROM users WHERE email='" + user.getMail() + "' AND password='"+ user.getPwd1() + "'";
 
 		PreparedStatement statement = null;
 		
@@ -139,8 +140,12 @@ public class ManageUsers {
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				user.setId(result.getInt("id"));
-				user.setMail(result.getString("mail"));
+				user.setMail(result.getString("email"));
 				can = true;
+			} else {
+				boolean[] myErrors = user.getError();
+				myErrors[9] = true;
+				user.setError(myErrors);
 			}
 			
 			result.close();
@@ -150,7 +155,8 @@ public class ManageUsers {
 			e.printStackTrace();
 			can = false;
 		}
-		
+		System.out.print(can);
+		System.out.print(user);
 		return Pair.of(can, user);
 	}
 	

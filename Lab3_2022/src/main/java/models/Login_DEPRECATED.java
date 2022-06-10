@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import managers.ManageUsers;
 import utils.DB;
 
-public class Login {
+public class Login_DEPRECATED {
 
 	private String mail = "";
 	private String pass = "";

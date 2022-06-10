@@ -10,9 +10,9 @@
 
 <form action="LoginController" method="POST">
     <label class="w3-text-red" for="mail"> Mail:</label><br>
-  	<input class="w3-input w3-border w3-light-grey" type="email" id="mail" name="mail" placeholder="Mail" value="${login.mail}" required pattern="^.{8,50}$"><br>
-    <label class="w3-text-red" for="pass"> Password: </label><br>
-  	<input class="w3-input w3-border w3-light-grey" type="password" id="pass" name="pass" placeholder="Password" value="${login.pass}" required pattern="^[A-Za-z\d@$!%?&_+\-*\/#]{8,50}$"><br>
+  	<input class="w3-input w3-border w3-light-grey" type="email" id="mail" name="mail" placeholder="Mail" value="${user.mail}" required pattern="^.{8,50}$"><br>
+    <label class="w3-text-red" for="pwd1"> Password: </label><br>
+  	<input class="w3-input w3-border w3-light-grey" type="password" id="pwd1" name="pwd1" placeholder="Password" value="${user.pwd1}" required pattern="^[A-Za-z\d@$!%?&_+\-*\/#]{8,50}$"><br>
     <input class="w3-btn w3-red" type="submit" name="sumbit" value="Login">
     <label class="w3-text-red" style="padding-left:10px"> Don't have an account? You can register </label>
     <a class="w3-text-red menu" id="RegisterController" href=#><b>here</b></a> <br>
@@ -22,10 +22,10 @@
 
 <div id="errors">
 	<ul>
-	<c:if test = "${login.error[0]}">
+	<c:if test = "${user.error[3] || user.error[4]}">
 		<li> Invalid credentials format </li>
 	</c:if>
-	<c:if test = "${login.error[1]}">
+	<c:if test = "${user.error[9]}">
 		<li> Invalid credentials </li>
 	</c:if>
 	</ul>
@@ -33,7 +33,7 @@
 
 <script>
 var errors = function() {
-	for(e of "${login.error}") {
+	for(e of "${user.error}") {
 		if (e == true)
 			return true;
 	}
