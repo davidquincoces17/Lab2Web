@@ -165,7 +165,7 @@ public class ManageUsers {
 	
 	
 	public List<User> getNotFollowedUsers(Integer id, Integer start, Integer end) {
-		 String query = "SELECT id,username,nickname,profilePhoto FROM user WHERE id NOT IN (SELECT id FROM user,follow WHERE id = fid AND uid = ?) AND id <> ? ORDER BY username LIMIT ?,?;";
+		 String query = "SELECT id,username,nickname,profilePhoto FROM user WHERE id NOT IN (SELECT id FROM user,follow WHERE id = followedUser AND userID = ?) AND id <> ? ORDER BY username LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {
