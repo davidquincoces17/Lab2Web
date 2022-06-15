@@ -17,7 +17,7 @@ public class ManageUsers {
 	
 	public ManageUsers() {
 		try {
-			db = DB.getDB();
+			db = new DB();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -127,14 +127,6 @@ public class ManageUsers {
 		String query = "SELECT * FROM user WHERE email='" + user.getMail() + "' AND password='"+ user.getPwd1() + "'";
 
 		PreparedStatement statement = null;
-		
-		DB db = null ;
-		
-		try {
-			db = DB.getDB();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		boolean can = false;
 		
 		try {
@@ -165,13 +157,14 @@ public class ManageUsers {
 	
 	
 	public List<User> getNotFollowedUsers(Integer id, Integer start, Integer end) {
-		 String query = "SELECT id,username,nickname,profilePhoto FROM user WHERE id NOT IN (SELECT id FROM user,follow WHERE id = followedUser AND userID = ?) AND id <> ? ORDER BY username LIMIT ?,?;";
+		 String query = "SELECT user.id,username,nickname,profilePhoto FROM user WHERE user.id NOT IN (SELECT user.id FROM user,follow WHERE user.id = followedUser AND userID = ?) AND user.id <> ? ORDER BY username LIMIT ?,?;";
 		 PreparedStatement statement = null;
+		 
 		 List<User> l = new ArrayList<User>();
 		 try {
 			 statement = db.prepareStatement(query);
 			 statement.setInt(1,id);
-			 statement.setInt(2, id);
+			 statement.setInt(2,id);
 			 statement.setInt(3,start);
 			 statement.setInt(4,end);
 			 ResultSet rs = statement.executeQuery();
