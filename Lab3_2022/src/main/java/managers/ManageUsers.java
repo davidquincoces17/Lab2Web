@@ -55,7 +55,7 @@ public class ManageUsers {
 
 	/* Get a user given its PK*/
 	public User getUser(Integer id) {
-		String query = "SELECT id,username,email FROM user WHERE id = ? ;";
+		String query = "SELECT id,username,email,nickname,gender FROM user WHERE id = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -68,6 +68,8 @@ public class ManageUsers {
 				user.setId(rs.getInt("id"));
 				user.setUsername(rs.getString("username"));
 				user.setMail(rs.getString("email"));
+				user.setNickname(rs.getString("nickname"));
+				user.setGender(rs.getString("gender"));
 			}
 			rs.close();
 			statement.close();
@@ -81,7 +83,7 @@ public class ManageUsers {
 	
 	// Get all the users
 	public List<User> getUsers(Integer start, Integer end) {
-		 String query = "SELECT id,username FROM user ORDER BY username ASC LIMIT ?,?;";
+		 String query = "SELECT id,username,nickname FROM user ORDER BY username ASC LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {
@@ -93,6 +95,7 @@ public class ManageUsers {
 				 User user = new User();
 				 user.setId(rs.getInt("id"));
 				 user.setUsername(rs.getString("username"));
+				 user.setNickname(rs.getString("nickname"));
 				 l.add(user);
 			 }
 			 rs.close();
