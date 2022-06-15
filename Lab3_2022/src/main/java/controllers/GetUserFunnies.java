@@ -19,7 +19,7 @@ import models.User;
 /**
  * Servlet implementation class dTcontroller
  */
-@WebServlet("/GetUserTweets")
+@WebServlet("/GetUserFunnies")
 public class GetUserFunnies extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,7 +46,7 @@ public class GetUserFunnies extends HttpServlet {
 		}
 
 		request.setAttribute("funnies",funnies);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ViewFunnies.jsp"); 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFunnies.jsp"); 
 		dispatcher.forward(request,response);
 		
 	}

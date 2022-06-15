@@ -16,7 +16,7 @@ public class ManageFunnies {
 	
 	public ManageFunnies() {
 		try {
-			db = DB.getDB();
+			db = new DB();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class ManageFunnies {
 	
 	/* Get funnies from a user given start and end*/
 	public List<Funny> getUserFunnies(Integer authorID,Integer start, Integer end) {
-		 String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.name FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID = ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
+		 String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID = ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
 		 PreparedStatement statement = null;
 		 List<Funny> l = new ArrayList<Funny>();
 		 try {
@@ -90,6 +90,48 @@ public class ManageFunnies {
 		} 
 		return  l;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* TODO --> GETfOLLOWSEDfUNNIES FUNCTIONALITY  */
+	
+	public List<Funny> getFollowedFunnies(Integer authorID,Integer start, Integer end) {
+		
+		/*
+		 String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID = ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
+		 PreparedStatement statement = null;
+		 List<Funny> l = new ArrayList<Funny>();
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,authorID);
+			 statement.setInt(2,start);
+			 statement.setInt(3,end);
+			 ResultSet rs = statement.executeQuery();
+			 while (rs.next()) {
+				 Funny funny = new Funny();
+				 funny.setId(rs.getInt("id"));
+				 funny.setParentId(rs.getInt("parentID"));
+				 funny.setAuthorId(rs.getInt("authorID"));
+				 funny.setTimestamp(rs.getTimestamp("timestamp"));
+				 funny.setContent(rs.getString("content"));
+				 l.add(funny);
+			 }
+			 rs.close();
+			 statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return  l;
+		*/
+		return null;
+	}
+	
 	
 	
 }
