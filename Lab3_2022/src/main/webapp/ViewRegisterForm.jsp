@@ -76,6 +76,7 @@ const pwd1 = document.getElementById("pwd1");
 const pwd2 = document.getElementById("pwd2");
 const gender = document.getElementById("gender");
 const birth = document.getElementById("birth");
+const nickname = document.getElementById("nickname");
 
 if ("${model.gender}".length > 0) {
 	gender.value = "${model.gender}";
