@@ -5,8 +5,8 @@
   <h4>My Profile</h4>
   <p><img src="imgs/me.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
 
-  <p class="w3-left-align"> <i class="fa fa-fw w3-margin-right"></i> ${user.nickname} </p>
-  <p class="w3-left-align"> <i class="fa fa-fw w3-margin-right"></i> @${user.username} </p>
+  <p class="w3-left-align"> <i class="fa fa-id-card fa fa-fw w3-margin-right"></i> ${user.nickname} </p>
+  <p class="w3-left-align"> <i class="fa fa-id-badge fa fa-fw w3-margin-right"></i> @${user.username} </p>
   <hr>
   <button type="button" class="editUser w3-row w3-button w3-green w3-section"><i class="fa fa-user-plus"></i> &nbsp;Edit</button> 
  </div>

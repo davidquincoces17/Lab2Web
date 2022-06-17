@@ -12,22 +12,54 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import managers.ManageUsers;
+import managers.ManageFunnies;
+import models.Funny;
 import models.User;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// TODO --> get your own and your friends (followed) funnies and display (get all so that they are ordered by time)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
- * Servlet implementation class GetNotFollowedUsers
+ * Servlet implementation class dTcontroller
  */
-@WebServlet("/GetNotFollowedUsers")
-public class GetNotFollowedUsers extends HttpServlet {
+@WebServlet("/GetFollowedFunnies")
+public class GetFollowedFunnies extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetNotFollowedUsers() {
+    public GetFollowedFunnies() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -35,21 +67,18 @@ public class GetNotFollowedUsers extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<User> users = Collections.emptyList();
-		
 		HttpSession session = request.getSession(false);
+		List<Funny> funnies = Collections.emptyList();
 		User user = (User) session.getAttribute("user");
-
+		
 		if (session != null || user != null) {
-		
-			ManageUsers userManager = new ManageUsers();
-			users = userManager.getNotFollowedUsers(user.getId(),0,4);
-			userManager.finalize();
-		
+			ManageFunnies funnyManager = new ManageFunnies();
+			funnies = funnyManager.getUserFunnies(user.getId(),0,4);
+			funnyManager.finalize();
 		}
 
-		request.setAttribute("users",users);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewNotFollowedUsers.jsp"); 
+		request.setAttribute("funnies",funnies);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFunnies.jsp"); 
 		dispatcher.forward(request,response);
 		
 	}
@@ -58,8 +87,8 @@ public class GetNotFollowedUsers extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
 }
+

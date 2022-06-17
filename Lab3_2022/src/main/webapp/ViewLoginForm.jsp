@@ -32,6 +32,10 @@
 </div>
 
 <script>
+
+$('#lrow1').html("<p></p>");
+$('#lrow2').html("<p></p>");
+
 var errors = function() {
 	for(e of "${user.error}") {
 		if (e == true)
