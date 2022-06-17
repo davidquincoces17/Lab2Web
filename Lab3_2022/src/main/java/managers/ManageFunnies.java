@@ -96,7 +96,7 @@ public class ManageFunnies {
 	
 	public List<Funny> getFollowedFunnies(Integer userID,Integer start, Integer end) {
 		
-		String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID IN (SELECT followedUser FROM follow WHERE userID = ? UNION SELECT ?) ORDER BY funny.timestamp DESC LIMIT ?,? ;";
+		String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username, user.nickname FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID IN (SELECT followedUser FROM follow WHERE userID = ? UNION SELECT ?) ORDER BY funny.timestamp DESC LIMIT ?,? ;";
 		 PreparedStatement statement = null;
 		 List<Funny> l = new ArrayList<Funny>();
 		 try {
@@ -113,6 +113,8 @@ public class ManageFunnies {
 				 funny.setAuthorId(rs.getInt("authorID"));
 				 funny.setTimestamp(rs.getTimestamp("timestamp"));
 				 funny.setContent(rs.getString("content"));
+				 funny.setAuthorNickname(rs.getString("nickname"));
+				 funny.setAuthorUsername(rs.getString("username"));
 				 l.add(funny);
 			 }
 			 rs.close();
