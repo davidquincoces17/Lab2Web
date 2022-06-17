@@ -94,26 +94,17 @@ public class ManageFunnies {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	/* TODO --> GETfOLLOWSEDfUNNIES FUNCTIONALITY  */
-	
-	public List<Funny> getFollowedFunnies(Integer authorID,Integer start, Integer end) {
+	public List<Funny> getFollowedFunnies(Integer userID,Integer start, Integer end) {
 		
-		/*
-		 String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID = ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
+		String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID IN (SELECT followedUser FROM follow WHERE userID = ? UNION SELECT ?) ORDER BY funny.timestamp DESC LIMIT ?,? ;";
 		 PreparedStatement statement = null;
 		 List<Funny> l = new ArrayList<Funny>();
 		 try {
 			 statement = db.prepareStatement(query);
-			 statement.setInt(1,authorID);
-			 statement.setInt(2,start);
-			 statement.setInt(3,end);
+			 statement.setInt(1,userID);
+			 statement.setInt(2,userID);
+			 statement.setInt(3,start);
+			 statement.setInt(4,end);
 			 ResultSet rs = statement.executeQuery();
 			 while (rs.next()) {
 				 Funny funny = new Funny();
@@ -130,8 +121,6 @@ public class ManageFunnies {
 			e.printStackTrace();
 		} 
 		return  l;
-		*/
-		return null;
 	}
 	
 	

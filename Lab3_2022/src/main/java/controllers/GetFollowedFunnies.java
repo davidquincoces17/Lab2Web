@@ -16,41 +16,6 @@ import managers.ManageFunnies;
 import models.Funny;
 import models.User;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/// TODO --> get your own and your friends (followed) funnies and display (get all so that they are ordered by time)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Servlet implementation class dTcontroller
- */
 @WebServlet("/GetFollowedFunnies")
 public class GetFollowedFunnies extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -73,7 +38,7 @@ public class GetFollowedFunnies extends HttpServlet {
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
-			funnies = funnyManager.getUserFunnies(user.getId(),0,4);
+			funnies = funnyManager.getFollowedFunnies(user.getId(),0,4);
 			funnyManager.finalize();
 		}
 

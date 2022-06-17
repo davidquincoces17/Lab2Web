@@ -6,19 +6,7 @@
 	$('#navigation').load('MenuController');
 	$('#lrow1').load('GetUserInfo');
 	$('#lrow2').load('GetNotFollowedUsers');
-	$('#iterator').load('GetUserFunnies');
-	
-	
-	//TODO getFollowedFunnies functionality!!!
-	
-	
-	//$('#iterator').load('GetFollowedFunnies');
-	
-	
-	
-	
-	
-	
+	$('#iterator').load('GetFollowedFunnies');
  });
 </script>
 
