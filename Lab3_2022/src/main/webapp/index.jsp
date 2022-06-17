@@ -33,7 +33,7 @@ $(document).ready(function(){
 <body>
 
  	<!-- Begin Navigation -->
- 	<div class="w3-bar w3-red" id="navigation">
+ 	<div class="w3-bar primary-color" id="navigation">
     <jsp:include page="${menu}" />
  	</div>
  	<!-- End Navigation -->
