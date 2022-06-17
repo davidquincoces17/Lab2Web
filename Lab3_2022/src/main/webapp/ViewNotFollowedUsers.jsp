@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div>
-	<button>Hola</button>
+	<h2>You may know...</h2>
 </div>
 <c:forEach var="u" items="${users}">       
 <div id="${u.id}" class="w3-container w3-card w3-round w3-white w3-center w3-section">
