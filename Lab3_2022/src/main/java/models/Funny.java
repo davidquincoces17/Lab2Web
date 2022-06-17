@@ -8,6 +8,8 @@ public class Funny implements java.io.Serializable {
 	 private int id;
 	 private int parentId;
 	 private int authorId;
+	 private String authorNickname;
+	 private String authorUsername;
 	 private String content;
 	 private Timestamp timestamp;
 
@@ -52,6 +54,22 @@ public class Funny implements java.io.Serializable {
 
 	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public String getAuthorNickname() {
+		return authorNickname;
+	}
+
+	public void setAuthorNickname(String authorNickname) {
+		this.authorNickname = authorNickname;
+	}
+
+	public String getAuthorUsername() {
+		return authorUsername;
+	}
+
+	public void setAuthorUsername(String authorUsername) {
+		this.authorUsername = authorUsername;
 	}
 
 
