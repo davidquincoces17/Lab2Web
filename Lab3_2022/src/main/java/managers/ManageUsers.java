@@ -158,7 +158,7 @@ public class ManageUsers {
 		return Pair.of(can, user);
 	}
 	
-	
+	/*Get information of non-followed users*/
 	public List<User> getNotFollowedUsers(Integer id, Integer start, Integer end) {
 		 String query = "SELECT user.id,username,nickname,profilePhoto FROM user WHERE user.id NOT IN (SELECT user.id FROM user,follow WHERE user.id = followedUser AND userID = ?) AND user.id <> ? ORDER BY username LIMIT ?,?;";
 		 PreparedStatement statement = null;
@@ -176,6 +176,7 @@ public class ManageUsers {
 				 user.setId(rs.getInt("id"));
 				 user.setUsername(rs.getString("username"));
 				 user.setNickname(rs.getString("nickname"));
+				 user.setProfilePhoto(rs.getString("profilePhoto"));
 				 l.add(user);
 			 }
 			 rs.close();
