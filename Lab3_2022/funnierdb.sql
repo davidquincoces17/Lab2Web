@@ -124,7 +124,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,6 +133,17 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'david','david.grao01@estudiant.upf.edu','Hola123%','elgato',0,'2000-02-07','images/image1.png',1),(2,'marcos','marcosariel.chindemi01@estudiant.upf.edu','Hola123%','elchindi',0,'1997-12-23','images/image2.png',1),(3,'xavi','xavi.gallardo01@estudiant.upf.edu','Hola123%','xvgg',0,'1999-11-22','images/image3.png',1),(4,'dave','david.quincoces01@estudiant.upf.edu','Hola123%','davee',0,'2000-12-25','images/image4.png',1),(5,'maria','maria.montserrat01@estudiant.upf.edu','Chau123%','marimontsi',1,'2000-01-01','images/image5.png',0);
+INSERT INTO `user` VALUES (1,'david','david.grao01@estudiant.upf.edu','Hola123%','elgato',0,'2000-02-07','imgs/david.png',1),(2,'marcos','marcosariel.chindemi01@estudiant.upf.edu','Hola123%','elchindi',0,'1997-12-23','imgs/marcos.png',1),(3,'xavi','xavi.gallardo01@estudiant.upf.edu','Hola123%','xvgg',0,'1999-11-22','imgs/xavi.png',1),(4,'dave','david.quincoces01@estudiant.upf.edu','Hola123%','davee',0,'2000-12-25','imgs/dave.png',1),(5,'maria','maria.montserrat01@estudiant.upf.edu','Chau123%','marimontsi',1,'2000-01-01','imgs/maria.png',0),(6,'David2','david@keonn','Hola123%','elgato',1,'2000-02-07','imgs/David2.png',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-06-17 19:44:24
