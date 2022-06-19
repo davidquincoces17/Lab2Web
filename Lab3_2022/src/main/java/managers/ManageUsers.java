@@ -189,6 +189,34 @@ public class ManageUsers {
 	}
 	
 	
+	/*Get information of followed users*/
+	public List<User> getFollowedUsers(Integer id, Integer start, Integer end) {
+		 String query = "SELECT user.id,username,nickname,profilePhoto FROM user,follow WHERE user.id = followedUser AND userID = ? ORDER BY username LIMIT ?,?;";
+		 PreparedStatement statement = null;
+		 
+		 List<User> l = new ArrayList<User>();
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,id);
+			 statement.setInt(2,start);
+			 statement.setInt(3,end);
+			 ResultSet rs = statement.executeQuery();
+			 while (rs.next()) {
+				 User user = new User();
+				 user.setId(rs.getInt("id"));
+				 user.setUsername(rs.getString("username"));
+				 user.setNickname(rs.getString("nickname"));
+				 user.setProfilePhoto(rs.getString("profilePhoto"));
+				 l.add(user);
+			 }
+			 rs.close();
+			 statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return  l;
+	}
+	
 	private boolean hasValue(String val) {
 		return((val != null) && (!val.equals("")));
 	}
