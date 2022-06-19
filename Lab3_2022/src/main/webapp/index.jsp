@@ -23,9 +23,18 @@ $(document).ready(function(){
 		//$('#content').load($(this).attr('id'));
 		event.preventDefault();
 	});
+	
 	$(document).on("submit","form", function(event) {
 		$('#content').load($(this).attr('action'),$(this).serialize());
 	    event.preventDefault();
+	});
+	
+	/* Add funny */
+	$(document).on("click","#addFunny",function(event){
+		$.post( "AddFunny", { content: $("#funnyContent").text()}, function(event) {
+			$("#content").load("GetOwnTimeline");
+		});
+		event.preventDefault();
 	});
 });
 </script>

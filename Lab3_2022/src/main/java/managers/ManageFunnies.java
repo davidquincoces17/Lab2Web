@@ -32,15 +32,15 @@ public class ManageFunnies {
 	
 	/* Add a funny */
 	public void addFunny(Funny funny) {
-		String query = "INSERT INTO funny (id,parentID,authorID,content,timestamp) VALUES (?,?,?,?,?)";
+		String query = "INSERT INTO funny (id,parentID,authorID,content,timestamp) VALUES (DEFAULT,DEFAULT,2,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
-			statement.setInt(1,funny.getId());
-			statement.setInt(2,funny.getParentId());
-			statement.setInt(3,funny.getAuthorId());
-			statement.setTimestamp(4,funny.getTimestamp());
-			statement.setString(5,funny.getContent());
+			//statement.setInt(1,funny.getId());
+			//statement.setInt(2,funny.getParentId());
+			//statement.setInt(1,funny.getAuthorId());
+			statement.setString(1,funny.getContent());
+			statement.setTimestamp(2,funny.getTimestamp());
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
