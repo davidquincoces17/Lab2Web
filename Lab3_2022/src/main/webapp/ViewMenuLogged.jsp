@@ -3,7 +3,7 @@
 
 <div class="w3-bar primary-color">
 	<a class="w3-bar-item w3-button" href="MainController"> <i class="fa fa-home" aria-hidden="true"></i> </a>
-	<a class="menu w3-bar-item w3-button w3-hide-small" id="GetTopFunnies" href=#> Top Funnies </a>
+	<a class="menu w3-bar-item w3-button w3-hide-small" id="GetUserFunnies" href=#> Top Funnies </a>
 	<a class="menu w3-bar-item w3-button w3-hide-small" id="GetFollowedUsers" href=#> Friends </a>
 	<input class="w3-bar-item menu-input" placeholder="Search Funnies" type="text" style="width:20%">
 	<a class="menu w3-bar-item w3-button w3-hide-small" id="SearchController" href=#><i class="fa fa-search"></i> </a>
