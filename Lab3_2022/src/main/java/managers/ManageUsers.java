@@ -55,7 +55,7 @@ public class ManageUsers {
 
 	/* Get a user given its PK*/
 	public User getUser(Integer id) {
-		String query = "SELECT id,username,email,nickname,gender FROM user WHERE id = ? ;";
+		String query = "SELECT id,username,email,nickname,gender,profilePhoto FROM user WHERE id = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -70,6 +70,7 @@ public class ManageUsers {
 				user.setMail(rs.getString("email"));
 				user.setNickname(rs.getString("nickname"));
 				user.setGender(rs.getString("gender"));
+				user.setProfilePhoto(rs.getString("profilePhoto"));
 			}
 			rs.close();
 			statement.close();
