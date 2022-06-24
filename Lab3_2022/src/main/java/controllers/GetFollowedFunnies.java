@@ -42,6 +42,7 @@ public class GetFollowedFunnies extends HttpServlet {
 			funnyManager.finalize();
 		}
 
+		request.setAttribute("user",user);
 		request.setAttribute("funnies",funnies);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFunnies.jsp"); 
 		dispatcher.forward(request,response);
