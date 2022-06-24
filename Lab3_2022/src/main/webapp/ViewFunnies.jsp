@@ -10,7 +10,7 @@
    <h6><span class="w3-opacity" style="font-size: 20px; opacity: 0.4"> &nbsp @${t.authorUsername} </span></h6>
    </div>
    <hr class="w3-clear">
-   <p> ${t.content} </p>
+   <p style="overflow-wrap: break-word"> ${t.content} </p>
    <button type="button" class="likeTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
    <button type="button" class="dislikeTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-thumbs-down"></i> &nbsp;Dislike</button>
    <button type="button" class="replyTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-reply"></i> &nbsp;Reply</button>
