@@ -12,6 +12,7 @@ public class Funny implements java.io.Serializable {
 	 private String authorUsername;
 	 private String content;
 	 private Timestamp timestamp;
+	 private String image;
 
 	 public Funny() {
 	 }
@@ -70,6 +71,14 @@ public class Funny implements java.io.Serializable {
 
 	public void setAuthorUsername(String authorUsername) {
 		this.authorUsername = authorUsername;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 

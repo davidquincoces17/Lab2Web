@@ -3,7 +3,7 @@
 
 <c:forEach var="t" items="${funnies}">       
  <div id="${t.id}" class="w3-container w3-card w3-section w3-white w3-round w3-animate-opacity"><br>
-   <img src="imgs/me.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+   <img src="${t.image}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
       <span class="w3-right w3-opacity"> ${t.timestamp} </span>
    <div style=display:flex>   
    <h4> ${t.authorNickname} </h4>
