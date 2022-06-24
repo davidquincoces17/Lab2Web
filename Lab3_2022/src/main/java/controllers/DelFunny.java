@@ -19,7 +19,7 @@ import models.User;
 /**
  * Servlet implementation class DelTweet
  */
-@WebServlet("/DelTweet")
+@WebServlet("/DelFunny")
 public class DelFunny extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,10 +42,12 @@ public class DelFunny extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 
 		try {
+			
 			if (session != null || user != null) {
 				BeanUtils.populate(funny, request.getParameterMap());
 				funnyManager.deleteFunny(funny.getId());
 				funnyManager.finalize();
+				
 			}
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
