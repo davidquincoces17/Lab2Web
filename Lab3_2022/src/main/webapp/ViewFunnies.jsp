@@ -14,6 +14,10 @@
    <button type="button" class="likeTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
    <button type="button" class="dislikeTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-thumbs-down"></i> &nbsp;Dislike</button>
    <button type="button" class="replyTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-reply"></i> &nbsp;Reply</button>
-   <button type="button" class="delTweet w3-button w3-red w3-margin-bottom"><i class="fa fa-trash"></i> &nbsp;Delete</button>
+   <c:if test="${user.username.equals(t.authorUsername)}">
+   		<button type="button" class="delTweet w3-button w3-red w3-margin-bottom"><i class="fa fa-trash"></i> &nbsp;Delete</button>
+	</c:if>
+	
+   
  </div>
 </c:forEach>
