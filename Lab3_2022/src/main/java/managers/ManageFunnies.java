@@ -32,15 +32,15 @@ public class ManageFunnies {
 	
 	/* Add a funny */
 	public void addFunny(Funny funny) {
-		String query = "INSERT INTO funny (id,parentID,authorID,content,timestamp) VALUES (DEFAULT,DEFAULT,2,?,?)";
+		String query = "INSERT INTO funny (id,parentID,authorID,content,timestamp) VALUES (DEFAULT,DEFAULT,?,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
 			//statement.setInt(1,funny.getId());
 			//statement.setInt(2,funny.getParentId());
-			//statement.setInt(1,funny.getAuthorId());
-			statement.setString(1,funny.getContent());
-			statement.setTimestamp(2,funny.getTimestamp());
+			statement.setInt(1,funny.getAuthorId());
+			statement.setString(2,funny.getContent());
+			statement.setTimestamp(3,funny.getTimestamp());
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
@@ -96,7 +96,7 @@ public class ManageFunnies {
 	
 	public List<Funny> getFollowedFunnies(Integer userID,Integer start, Integer end) {
 		
-		String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username, user.nickname FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID IN (SELECT followedUser FROM follow WHERE userID = ? UNION SELECT ?) ORDER BY funny.timestamp DESC LIMIT ?,? ;";
+		String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username,user.nickname FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID IN (SELECT followedUser FROM follow WHERE userID = ? UNION SELECT ?) ORDER BY funny.timestamp DESC LIMIT ?,? ;";
 		 PreparedStatement statement = null;
 		 List<Funny> l = new ArrayList<Funny>();
 		 try {
