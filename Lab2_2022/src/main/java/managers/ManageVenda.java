@@ -4,14 +4,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import models.User;
+import models.Venda;
 import utils.DB;
 
-public class ManageUsers {
+public class ManageVenda {
 	
 	private DB db = null ;
 	
-	public ManageUsers() {
+	public ManageVenda() {
 		try {
 			db = new DB();
 		} catch (Exception e) {
@@ -28,17 +28,16 @@ public class ManageUsers {
 	}
 		
 	// Add new user
-	public void addUser(String username, String mail, String pwd, String nickname, String gender, String birth) {
-		String query = "INSERT INTO users (username,mail,pwd,nickname,gender,birth) VALUES (?,?,?,?,?,?)";
+	public void addVenda(String data, String hora, String pagament, String client, String venedor) {
+		String query = "INSERT INTO venda (data,hora,forma_pagament,id,dni) VALUES (?,?,?,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
-			statement.setString(1,username);
-			statement.setString(2,mail);
-			statement.setString(3,pwd);
-			statement.setString(4,nickname);
-			statement.setString(5,gender);
-			statement.setString(6,birth);
+			statement.setString(1,data);
+			statement.setString(2,hora);
+			statement.setString(3,pagament);
+			statement.setString(4,client);
+			statement.setString(5,venedor);
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
@@ -46,21 +45,21 @@ public class ManageUsers {
 		}
 	}
 	
-	/*Check if all the fields are filled correctly */
-	public boolean isComplete(User user) {
-	    return(hasValue(user.getUsername()) &&
-	    	   hasValue(user.getMail()) &&
-	    	   hasValue(user.getPwd1()) &&
-	           hasValue(user.getPwd2()) &&
-	    	   hasValue(user.getNickname()) &&
-	           hasValue(user.getGender()) &&
-	           hasValue(user.getBirth()) );
+		
+	public boolean isComplete(Venda user) {
+	    return(hasValue(user.getDate()) &&
+	    	   hasValue(user.getHora()) &&
+	    	   hasValue(user.getPagament()) &&
+	           hasValue(user.getClient()) &&
+	    	   hasValue(user.getVenedor()) );
 	}
+	
 	
 	private boolean hasValue(String val) {
 		return((val != null) && (!val.equals("")));
 	}
 		
+
 	
 	// TODO: add other methods 
 	/*Check if all the fields are filled correctly */

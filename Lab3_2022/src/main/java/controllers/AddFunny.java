@@ -46,7 +46,7 @@ public class AddFunny extends HttpServlet {
 			
 			if (session != null || user != null)
 				BeanUtils.populate(funny, request.getParameterMap());
-				//funny.setId(user.getId());
+				funny.setAuthorId(user.getId());
 				funny.setAuthorUsername(user.getUsername());
 				funny.setTimestamp(new Timestamp(System.currentTimeMillis()));
 				funnyManager.addFunny(funny);
