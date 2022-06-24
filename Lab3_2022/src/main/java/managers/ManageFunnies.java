@@ -65,7 +65,7 @@ public class ManageFunnies {
 	
 	/* Get funnies from a user given start and end*/
 	public List<Funny> getUserFunnies(Integer authorID,Integer start, Integer end) {
-		 String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username, user.nickname FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID = ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
+		 String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username,user.nickname,user.profilePhoto FROM funny INNER JOIN user ON funny.authorID = user.id where funny.authorID = ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
 		 PreparedStatement statement = null;
 		 List<Funny> l = new ArrayList<Funny>();
 		 try {
@@ -83,6 +83,7 @@ public class ManageFunnies {
 				 funny.setContent(rs.getString("content"));
 				 funny.setAuthorNickname(rs.getString("nickname"));
 				 funny.setAuthorUsername(rs.getString("username"));
+				 funny.setImage(rs.getString("profilePhoto"));
 				 l.add(funny);
 			 }
 			 rs.close();
