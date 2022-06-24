@@ -32,7 +32,9 @@
 </div>
 
 <script>
-
+$(document).ready(function(){
+    $('#navigation').load('MenuController');
+ });
 $('#lrow1').html("<p></p>");
 $('#lrow2').html("<p></p>");
 
