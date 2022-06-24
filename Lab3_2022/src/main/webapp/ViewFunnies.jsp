@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 
 <c:forEach var="t" items="${funnies}">       
  <div id="${t.id}" class="w3-container w3-card w3-section w3-white w3-round w3-animate-opacity"><br>
    <img src="${t.image}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-      <span class="w3-right w3-opacity"> ${t.timestamp} </span>
+      <span class="w3-right w3-opacity"> ${fn:substring(t.timestamp,0,19)} </span>
    <div style=display:flex>   
    <h4> ${t.authorNickname} </h4>
    <h6><span class="w3-opacity" style="font-size: 20px; opacity: 0.4"> &nbsp @${t.authorUsername} </span></h6>

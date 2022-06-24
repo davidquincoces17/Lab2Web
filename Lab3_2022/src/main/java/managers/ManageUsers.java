@@ -45,8 +45,8 @@ public class ManageUsers {
 			statement.setString(4,nickname);
 			statement.setInt(5,Integer.parseInt(gender));
 			statement.setString(6,birth);
-			statement.setString(7, profilePhoto);
-			statement.setBoolean(8, isAdmin);
+			statement.setString(7,profilePhoto);
+			statement.setBoolean(8,isAdmin);
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {

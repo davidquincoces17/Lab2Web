@@ -42,12 +42,10 @@ public class DelFunny extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 
 		try {
-			
 			if (session != null || user != null) {
 				BeanUtils.populate(funny, request.getParameterMap());
 				funnyManager.deleteFunny(funny.getId());
 				funnyManager.finalize();
-				
 			}
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
