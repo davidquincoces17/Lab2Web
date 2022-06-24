@@ -133,7 +133,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'david','david.grao01@estudiant.upf.edu','Hola123%','elgato',0,'2000-02-07','imgs/david.png',1),(2,'marcos','marcosariel.chindemi01@estudiant.upf.edu','Hola123%','elchindi',0,'1997-12-23','imgs/marcos.png',1),(3,'xavi','xavi.gallardo01@estudiant.upf.edu','Hola123%','xvgg',0,'1999-11-22','imgs/xavi.png',1),(4,'dave','david.quincoces01@estudiant.upf.edu','Hola123%','davee',0,'2000-12-25','imgs/dave.png',1),(5,'maria','maria.montserrat01@estudiant.upf.edu','Chau123%','marimontsi',1,'2000-01-01','imgs/maria.png',0),(6,'David2','david@keonn','Hola123%','elgato',1,'2000-02-07','imgs/David2.png',0);
+INSERT INTO `user` VALUES (1,'david','david.grao01@estudiant.upf.edu','Hola123%','elgato',0,'2000-02-07','imgs/profiles/david.png',1),(2,'marcos','marcosariel.chindemi01@estudiant.upf.edu','Hola123%','elchindi',0,'1997-12-23','imgs/profiles/marcos.png',1),(3,'xavi','xavi.gallardo01@estudiant.upf.edu','Hola123%','xvgg',0,'1999-11-22','imgs/profiles/xavi.png',1),(4,'dave','david.quincoces01@estudiant.upf.edu','Hola123%','davee',0,'2000-12-25','imgs/profiles/dave.png',1),(5,'maria','maria.montserrat01@estudiant.upf.edu','Chau123%','marimontsi',1,'2000-01-01','imgs/profiles/maria.png',0),(6,'David2','david@keonn','Hola123%','elgato',1,'2000-02-07','imgs/profiles/David2.png',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

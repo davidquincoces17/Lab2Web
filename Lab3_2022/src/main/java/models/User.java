@@ -35,7 +35,7 @@ public class User implements java.io.Serializable {
 	private String nickname = "";
 	private String gender = "";
 	private String birth = "";
-	private String profilePhoto = "";
+	private String profilePhoto = "imgs/me.png";
 	private boolean isAdmin = false;
 	
 	private boolean[] error = {false,false,false,false,false,false,false,false,false,false};
