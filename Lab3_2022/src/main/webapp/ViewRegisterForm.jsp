@@ -13,7 +13,7 @@
   <label class="w3-text-red" for="username"> User name:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="text" id="username" name="username" placeholder="Name" onfocusout="checkUniqueness('username')" value="${model.username}" required pattern="^[a-zA-Z\d_]{1,10}$"><br>
   <label class="w3-text-red" for="mail"> Mail:</label><br>
-  <input class="w3-input w3-border w3-light-grey" type="email" id="mail" name="mail" placeholder="Mail" onfocusout="checkUniqueness('mail')" value="${model.mail}" required pattern="^.{8,50}$"><br>
+  <input class="w3-input w3-border w3-light-grey" type="email" id="mail" name="mail" placeholder="Mail" onfocusout="checkUniqueness('email')" value="${model.mail}" required pattern="^.{8,50}$"><br>
   <label class="w3-text-red" for="pwd1"> Password: </label><br>
   <input class="w3-input w3-border w3-light-grey" type="password" id="pwd1" name="pwd1" placeholder="Password" value="${model.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&_+\-*\/#])[A-Za-z\d@$!%?&_+\-*\/#]{8,50}$"><br>
   <label class="w3-text-red" for="pwd2"> Confirm Password: </label><br>
@@ -112,7 +112,7 @@ var checkUniqueness = function(inputID) {
 	var input;
 	if(inputID == "username")
 		input = username;
-	else if(inputID == "mail")
+	else if(inputID == "email")
 		input = email;
 	else
 		return;
