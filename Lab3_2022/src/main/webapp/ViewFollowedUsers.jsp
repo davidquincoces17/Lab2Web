@@ -9,6 +9,6 @@
 	<p>My Friends</p>
     <img class="w3-circle" src="${u.profilePhoto}" alt="Avatar" style="width:50%"><br>
     <div>${u.username}</div>
-   	<button type="button" class="followUser w3-row w3-button w3-green w3-section"><i class="fa fa-user-plus"></i> &nbsp;Unfollow</button> 
+   	<button type="button" class="unfollowUser w3-row w3-button w3-green w3-section"><i class="fa fa-user-plus"></i> &nbsp;Unfollow</button> 
 </div>
 </c:forEach>

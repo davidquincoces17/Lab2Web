@@ -3,6 +3,8 @@ package managers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +49,42 @@ public class ManageUsers {
 			statement.setBoolean(8, isAdmin);
 			statement.executeUpdate();
 			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	// Follow a user
+	public void followUser(Integer uid, Integer fid) {
+		String query = "INSERT INTO follow (userID,followedUser,timestamp) VALUES (?,?,?)";
+		PreparedStatement statement = null;
+		try {
+			statement = db.prepareStatement(query);
+			statement.setInt(1,uid);
+			statement.setInt(2,fid);
+			statement.setTimestamp(3,new Timestamp(System.currentTimeMillis()));
+			statement.executeUpdate();
+			statement.close();
+		} catch (SQLIntegrityConstraintViolationException e) {
+			System.out.println(e.getMessage());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// Unfollow a user
+	public void unfollowUser(Integer uid, Integer fid) {
+		String query = "DELETE FROM follow WHERE userID = ? AND followedUser = ?";
+		PreparedStatement statement = null;
+		try {
+			statement = db.prepareStatement(query);
+			statement.setInt(1,uid);
+			statement.setInt(2,fid);
+			statement.executeUpdate();
+			statement.close();
+		} catch (SQLIntegrityConstraintViolationException e) {
+			System.out.println(e.getMessage());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -242,5 +280,6 @@ public class ManageUsers {
 		}
 
 	}
+	
 	
 }

@@ -36,6 +36,24 @@ $(document).ready(function(){
 		});
 		event.preventDefault();
 	});
+	
+	/* Follow user */
+	$(document).on("click",".followUser",function(event){
+		var user = $(this).parent();
+		$.post( "FollowUser", { id: $(this).parent().attr("id") }, function(event) { 
+			$("#content").load("GetOwnTimeline");
+		    $('#lrow2').load('GetNotFollowedUsers');
+		});
+		event.preventDefault();
+	});
+	$(document).on("click",".unfollowUser",function(event) {
+		var user = $(this).parent();
+		$.post( "UnFollowUser", { id: $(this).parent().attr("id") }, function(event) {
+			$("#content").load("GetFollowedUsers");
+		    $('#lrow2').load('GetNotFollowedUsers');
+		});
+		event.preventDefault();
+	});
 });
 </script>
 </head>
