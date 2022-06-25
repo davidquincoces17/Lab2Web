@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,16 +38,24 @@ public class GetUserFunnies extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		List<Funny> funnies = Collections.emptyList();
+		List<Integer> funs = new ArrayList<Integer>();
+		List<Integer> unfuns = new ArrayList<Integer>();
 		User user = (User) session.getAttribute("user");
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
 			funnies = funnyManager.getUserFunnies(user.getId(),0,4);
+			for (Funny f: funnies) {
+				funs.add(funnyManager.getLikes(f.getId()));
+				unfuns.add(funnyManager.getDislikes(f.getId()));
+			}
 			funnyManager.finalize();
 		}
 
 		request.setAttribute("user",user);
 		request.setAttribute("funnies",funnies);
+		request.setAttribute("funs",funs);
+		request.setAttribute("unfuns",unfuns);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFunnies.jsp"); 
 		dispatcher.forward(request,response);
 		
