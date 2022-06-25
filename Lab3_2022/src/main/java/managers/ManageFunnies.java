@@ -51,12 +51,20 @@ public class ManageFunnies {
 	/* Delete existing funny */
 	public void deleteFunny(Integer id) {
 		String query = "DELETE FROM funny WHERE id = ?";
+		String query2 = "DELETE FROM funstate WHERE funnyID = ?";
 		PreparedStatement statement = null;
 		try {
+			
+			statement = db.prepareStatement(query2);
+			statement.setInt(1,id);
+			statement.executeUpdate();
+			statement.close();
+			
 			statement = db.prepareStatement(query);
 			statement.setInt(1,id);
 			statement.executeUpdate();
 			statement.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

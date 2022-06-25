@@ -46,6 +46,15 @@ $(document).ready(function(){
 		event.preventDefault();
 	});
 	
+	/* Like funny */
+	$(document).on("click",".likeTweet",function(event){
+		var funny = $(this).parent();
+		$.post( "LikeFunny", { id: funny.attr("id") } , function(event) {
+			$("#content").load("GetOwnTimeline");				
+		});
+		event.preventDefault();
+	});
+	
 	
 	/* Follow user */
 	$(document).on("click",".followUser",function(event){
