@@ -47,14 +47,20 @@ $(document).ready(function(){
 	});
 	
 	/* Like funny */
-	$(document).on("click",".likeTweet",function(event){
+	$(document).on("click",".likeFunny",function(event){
 		var funny = $(this).parent();
-		$.post( "LikeFunny", { id: funny.attr("id") } , function(event) {
+		$.post( "LikeFunny", { id: funny.attr("id") });
+		event.preventDefault();
+	});
+	
+	/* Dislike funny */
+	$(document).on("click",".dislikeFunny",function(event){
+		var funny = $(this).parent();
+		$.post( "DislikeFunny", { id: funny.attr("id") } , function(event) {
 			$("#content").load("GetOwnTimeline");				
 		});
 		event.preventDefault();
 	});
-	
 	
 	/* Follow user */
 	$(document).on("click",".followUser",function(event){
@@ -65,6 +71,8 @@ $(document).ready(function(){
 		});
 		event.preventDefault();
 	});
+	
+	/* Unfollow user */
 	$(document).on("click",".unfollowUser",function(event) {
 		var user = $(this).parent();
 		$.post( "UnFollowUser", { id: user.attr("id") }, function(event) {
