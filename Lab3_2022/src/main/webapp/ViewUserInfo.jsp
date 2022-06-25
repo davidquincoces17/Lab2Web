@@ -3,7 +3,7 @@
 
 <div class="w3-container  w3-white w3-section">
 <div style="display:flex;margin-top:20px" >
-  <div > <img src="${user.profilePhoto}" class="w3-circle" style="height:106px;width:106px;margin-right:10px" alt="Avatar"></div>
+  <div > <img src="${user.profilePhoto}" class="w3-circle" style="height:100px;width:100px;max-width:120px;margin-right:10px" alt="Avatar"></div>
   <div style="margin-top:20px;display:block">
   	<div style="font-size:24px">
   		<b> &nbsp &nbsp ${user.nickname}</b>
