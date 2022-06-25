@@ -49,7 +49,10 @@ $(document).ready(function(){
 	/* Like funny */
 	$(document).on("click",".likeFunny",function(event){
 		var funny = $(this).parent();
-		$.post( "LikeFunny", { id: funny.attr("id") });
+		$.post( "LikeFunny", { id: funny.attr("id") }, function(event) {
+			$("#content").load("GetOwnTimeline");	
+		});
+		
 		event.preventDefault();
 	});
 	
