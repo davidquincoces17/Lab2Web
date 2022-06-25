@@ -50,7 +50,7 @@ public class ManageFunnies {
 	
 	/* Delete existing funny */
 	public void deleteFunny(Integer id) {
-		String query = "DELETE FROM tweets WHERE id = ?";
+		String query = "DELETE FROM funny WHERE id = ?";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);

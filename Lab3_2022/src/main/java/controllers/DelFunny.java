@@ -19,7 +19,7 @@ import models.User;
 /**
  * Servlet implementation class DelTweet
  */
-@WebServlet("/DelTweet")
+@WebServlet("/DelFunny")
 public class DelFunny extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
