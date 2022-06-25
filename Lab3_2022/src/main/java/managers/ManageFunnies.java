@@ -135,6 +135,41 @@ public class ManageFunnies {
 		return  l;
 	}
 	
+	public int getLikes(int id) {
+		String query = "SELECT COUNT(*) AS `funs` FROM `funstate` WHERE (state = 1) AND (`funnyID` = ?)";
+		PreparedStatement statement = null;
+		int value = 0;
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,id);
+			 ResultSet rs = statement.executeQuery();
+			 rs.next();
+			 value = rs.getInt("funs");
+			 rs.close();
+			 statement.close();
+			 } catch (SQLException e) {
+					e.printStackTrace();
+				}
+		return value;
+	}
+	
+	public int getDislikes(int id) {
+		String query = "SELECT COUNT(`funnyID`) FROM `funstate` WHERE (state = 0) AND (`funnyID` = ?)";
+		PreparedStatement statement = null;
+		int value = 0;
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,id);
+			 ResultSet rs = statement.executeQuery();
+			 rs.next();
+			 value = rs.getInt("COUNT(`funnyID`)");
+			 rs.close();
+			 statement.close();
+			 } catch (SQLException e) {
+					e.printStackTrace();
+				}
+		return value;
+	}
 	
 	
 }

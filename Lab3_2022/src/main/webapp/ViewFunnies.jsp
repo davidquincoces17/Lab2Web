@@ -13,9 +13,9 @@
    </div>
    <hr class="w3-clear">
    <p style="overflow-wrap: break-word"> ${t.content} </p>
-<%--    ${funs[loop.index]} --%>
+   ${funs[loop.index]}
    <button  type="button" class="likeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="imgs/fun0.png" alt= "fun" style="height:24px; width:24px"></button>
-<%--    ${unfuns[loop.index]} --%>
+   ${unfuns[loop.index]}
    <button type="button" class="dislikeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="imgs/unfun0.png" alt= "unfun" style="height:24px; width:24px"></button>
    <button type="button" class="replyFunny w3-button w3-theme w3-margin-bottom"><i class="fa fa-reply"></i> &nbsp;Reply</button>
    <c:if test="${user.username.equals(t.authorUsername)}">

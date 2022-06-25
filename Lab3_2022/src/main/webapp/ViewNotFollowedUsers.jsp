@@ -7,7 +7,7 @@
 <c:forEach var="u" items="${users}">       
 <div id="${u.id}" class="w3-container w3-card w3-round w3-white w3-center w3-section" style="width:300px; height:300px">
 	<p>Friend Suggestion</p>
-    <img class="w3-circle" src="${u.profilePhoto}" alt="Avatar"><br><br>
+    <img class="w3-circle" src="${u.profilePhoto}" style="max-width:120px" alt="Avatar"><br><br>
     <div>@${u.username}</div>
    	<button type="button" class="followUser w3-row w3-button w3-green w3-section"><i class="fa fa-user-plus"></i> &nbsp;Follow</button> 
 </div>
