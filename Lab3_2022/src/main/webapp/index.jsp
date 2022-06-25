@@ -60,7 +60,7 @@ $(document).ready(function(){
 	$(document).on("click",".followUser",function(event){
 		var user = $(this).parent();
 		$.post( "FollowUser", { id: user.attr("id") }, function(event) { 
-			$("#content").load("GetOwnTimeline");
+			$("#content").load("GetFollowedUsers");
 		    $('#lrow2').load('GetNotFollowedUsers');
 		});
 		event.preventDefault();
