@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
-<c:forEach var="t" items="${funnies}">       
+<c:forEach var="t" items="${funnies}" varStatus="loop">
  <div id="${t.id}" class="w3-container w3-card w3-section w3-white w3-round w3-animate-opacity"><br>
    <img src="${t.image}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
       <span class="w3-right w3-opacity"> ${fn:substring(t.timestamp,0,19)} </span>
@@ -13,9 +13,11 @@
    </div>
    <hr class="w3-clear">
    <p style="overflow-wrap: break-word"> ${t.content} </p>
-   <button type="button" class="likeTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
-   <button type="button" class="dislikeTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-thumbs-down"></i> &nbsp;Dislike</button>
-   <button type="button" class="replyTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-reply"></i> &nbsp;Reply</button>
+<%--    ${funs[loop.index]} --%>
+   <button  type="button" class="likeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="imgs/fun0.png" alt= "fun" style="height:24px; width:24px"></button>
+<%--    ${unfuns[loop.index]} --%>
+   <button type="button" class="dislikeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="imgs/unfun0.png" alt= "unfun" style="height:24px; width:24px"></button>
+   <button type="button" class="replyFunny w3-button w3-theme w3-margin-bottom"><i class="fa fa-reply"></i> &nbsp;Reply</button>
    <c:if test="${user.username.equals(t.authorUsername)}">
    		<button type="button" class="delTweet w3-button w3-red w3-margin-bottom"><i class="fa fa-trash"></i> &nbsp;Delete</button>
 	</c:if>
