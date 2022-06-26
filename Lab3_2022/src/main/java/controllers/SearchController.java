@@ -46,7 +46,8 @@ public class SearchController extends HttpServlet {
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
-			funnies = funnyManager.getFunnySearch("'%"+"Hello"+"%'",0,4);
+			String toSearch = "%fun%";
+			funnies = funnyManager.getFunnySearch(toSearch,0,10);
 			
 			Integer value = 0;
 			for (Funny f: funnies) {

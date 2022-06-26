@@ -124,6 +124,7 @@ $(document).ready(function(){
 		event.preventDefault();
 	});
 	
+	/* Edit profile */
 	$(document).on("click","#getEditProfile",function(event){
 	    $("#content").load("GetEditProfile");
 		event.preventDefault();

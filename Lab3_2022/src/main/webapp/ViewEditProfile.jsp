@@ -27,5 +27,5 @@
   </select><br><br>
   <label class="w3-text-red" for="birth"> Date of birth:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="date" id="birth" name="birth" placeholder="Birth" value="${model.birth}" min="1900-01-01" max="2500-01-01" required pattern="^\d{4}-\d{2}-\d{2}$"><br>
-  <button class="w3-btn w3-red"> Update Profile </button>
+  <button class="w3-btn w3-red" style="border-radius:8px"> Update Profile </button>
 </form>

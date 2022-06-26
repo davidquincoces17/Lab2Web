@@ -192,9 +192,7 @@ public class ManageFunnies {
 	}
 	
 public List<Funny> getFunnySearch(String inputContent,Integer start, Integer end) {
-		
 		String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username,user.nickname,user.profilePhoto FROM funny INNER JOIN user ON funny.authorID = user.id WHERE content LIKE ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
-		System.out.print(query); 
 		PreparedStatement statement = null;
 		 List<Funny> l = new ArrayList<Funny>();
 		 try {
@@ -202,6 +200,7 @@ public List<Funny> getFunnySearch(String inputContent,Integer start, Integer end
 			 statement.setString(1,inputContent);
 			 statement.setInt(2,start);
 			 statement.setInt(3,end);
+			 System.out.println(statement);
 			 ResultSet rs = statement.executeQuery();
 			 while (rs.next()) {
 				 Funny funny = new Funny();
