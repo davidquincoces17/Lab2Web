@@ -63,46 +63,50 @@ public class SearchController extends HttpServlet {
 		if (session != null || user != null) {
 			if (searchPrepared) {
 				System.out.println("SEARCH PREPARED IS TRUE");
-			}
-			//System.out.println("HOLAAAAAAAAAAAAAAAAAAA");
-			//System.out.println(something);
-			//System.out.println(something.get("search"));
-			ManageFunnies funnyManager = new ManageFunnies();
-			String toSearch = "%"+search.getSearchValue()+"%";
-			System.out.println("--------> " + search.getSearchValue());
-			if(toSearch != null) {
-				funnies = funnyManager.getFunnySearch(toSearch,0,10);
-			}
-			
-			
-			Integer value = 0;
-			for (Funny f: funnies) {
-				funs.add(funnyManager.getLikes(f.getId()));
-				unfuns.add(funnyManager.getDislikes(f.getId()));
-				value = funnyManager.getFunnyReaction(user.getId(),f.getId());
-				
-				if(value == 0) {
-					imgStateFun.add("imgs/fun0.png");
-					imgStateUnfun.add("imgs/unfun1.png");
-				} else if(value == 1) {
-					imgStateFun.add("imgs/fun1.png");
-					imgStateUnfun.add("imgs/unfun0.png");
-				} else {
-					imgStateFun.add("imgs/fun0.png");
-					imgStateUnfun.add("imgs/unfun0.png");
+				//System.out.println("HOLAAAAAAAAAAAAAAAAAAA");
+				//System.out.println(something);
+				//System.out.println(something.get("search"));
+				ManageFunnies funnyManager = new ManageFunnies();
+				String toSearch = "%"+search.getSearchValue()+"%";
+				System.out.println("--------> " + search.getSearchValue());
+				if(toSearch != null) {
+					funnies = funnyManager.getFunnySearch(toSearch,0,10);
 				}
+				
+				
+				Integer value = 0;
+				for (Funny f: funnies) {
+					funs.add(funnyManager.getLikes(f.getId()));
+					unfuns.add(funnyManager.getDislikes(f.getId()));
+					value = funnyManager.getFunnyReaction(user.getId(),f.getId());
+					
+					if(value == 0) {
+						imgStateFun.add("imgs/fun0.png");
+						imgStateUnfun.add("imgs/unfun1.png");
+					} else if(value == 1) {
+						imgStateFun.add("imgs/fun1.png");
+						imgStateUnfun.add("imgs/unfun0.png");
+					} else {
+						imgStateFun.add("imgs/fun0.png");
+						imgStateUnfun.add("imgs/unfun0.png");
+					}
+				}
+				funnyManager.finalize();
+				searchPrepared = false;
+				
+				
 			}
-			funnyManager.finalize();
+			request.setAttribute("user",user);
+			request.setAttribute("funnies",funnies);
+			request.setAttribute("funs",funs);
+			request.setAttribute("unfuns",unfuns);
+			request.setAttribute("imgStateFun",imgStateFun);
+			request.setAttribute("imgStateUnfun",imgStateUnfun);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
+			dispatcher.forward(request,response);
 		}
-
-		request.setAttribute("user",user);
-		request.setAttribute("funnies",funnies);
-		request.setAttribute("funs",funs);
-		request.setAttribute("unfuns",unfuns);
-		request.setAttribute("imgStateFun",imgStateFun);
-		request.setAttribute("imgStateUnfun",imgStateUnfun);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
-		dispatcher.forward(request,response);
+		
+		
 		
 	}
 
