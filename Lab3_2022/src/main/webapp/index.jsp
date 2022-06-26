@@ -70,7 +70,7 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				//$("#content").load("SearchController");
+				$("#content").load("SearchController");
 			}
 		});
 		event.preventDefault();
@@ -85,7 +85,7 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				//$("#content").load("SearchController");
+				$("#content").load("SearchController");
 			}
 		});
 		
@@ -101,7 +101,7 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				//$("#content").load("SearchController");
+				$("#content").load("SearchController");
 			}
 		});
 		event.preventDefault();

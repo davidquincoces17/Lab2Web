@@ -40,69 +40,62 @@ public class SearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
+		
 		List<Funny> funnies = Collections.emptyList();
 		List<Integer> funs = new ArrayList<Integer>();
 		List<Integer> unfuns = new ArrayList<Integer>();
 		List<String> imgStateFun = new ArrayList<String>();
 		List<String> imgStateUnfun = new ArrayList<String>();
+		
 		User user = (User) session.getAttribute("user");
 		Search search = new Search();
-		
-		try {
-			
-			if (session != null || user != null)
-				BeanUtils.populate(search, request.getParameterMap());
-				System.out.println("SEARCH PREPARED IS TRUE");
-				ManageFunnies funnyManager = new ManageFunnies();
-				String toSearch = "%"+search.getSearchValue()+"%";
-				System.out.println("--------> " + toSearch);
-				if(toSearch != null) {
-					funnies = funnyManager.getFunnySearch(toSearch,0,4);
-				}
-				
-				Integer value = 0;
-				for (Funny f: funnies) {
-					funs.add(funnyManager.getLikes(f.getId()));
-					unfuns.add(funnyManager.getDislikes(f.getId()));
-					value = funnyManager.getFunnyReaction(user.getId(),f.getId());
-					
-					if(value == 0) {
-						imgStateFun.add("imgs/fun0.png");
-						imgStateUnfun.add("imgs/unfun1.png");
-					} else if(value == 1) {
-						imgStateFun.add("imgs/fun1.png");
-						imgStateUnfun.add("imgs/unfun0.png");
-					} else {
-						imgStateFun.add("imgs/fun0.png");
-						imgStateUnfun.add("imgs/unfun0.png");
-					}
-				}
-				funnyManager.finalize();
-		
 
-				request.setAttribute("funnies",funnies);
-				request.setAttribute("user",user);
-				request.setAttribute("funnies",funnies);
-				request.setAttribute("funs",funs);
-				request.setAttribute("unfuns",unfuns);
-				request.setAttribute("imgStateFun",imgStateFun);
-				request.setAttribute("imgStateUnfun",imgStateUnfun);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
-				dispatcher.forward(request,response);
 			
-						
+		if (session != null || user != null) {
+			try {
+				BeanUtils.populate(search, request.getParameterMap());
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("SEARCH PREPARED IS TRUE");
+			ManageFunnies funnyManager = new ManageFunnies();
+			String toSearch = "%"+search.getSearchValue()+"%";
+			System.out.println("--------> " + toSearch);
+
+			funnies = funnyManager.getFunnySearch(toSearch,0,4);
+			
+			Integer value = 0;
+			for (Funny f: funnies) {
+				funs.add(funnyManager.getLikes(f.getId()));
+				unfuns.add(funnyManager.getDislikes(f.getId()));
+				value = funnyManager.getFunnyReaction(user.getId(),f.getId());
 				
-		} catch (IllegalAccessException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				if(value == 0) {
+					imgStateFun.add("imgs/fun0.png");
+					imgStateUnfun.add("imgs/unfun1.png");
+				} else if(value == 1) {
+					imgStateFun.add("imgs/fun1.png");
+					imgStateUnfun.add("imgs/unfun0.png");
+				} else {
+					imgStateFun.add("imgs/fun0.png");
+					imgStateUnfun.add("imgs/unfun0.png");
+				}
+			}
+			
+			funnyManager.finalize();
 		}
 
-				
-				
-				
-			
+		request.setAttribute("funnies",funnies);
+		request.setAttribute("user",user);
+		request.setAttribute("funnies",funnies);
+		request.setAttribute("funs",funs);
+		request.setAttribute("unfuns",unfuns);
+		request.setAttribute("imgStateFun",imgStateFun);
+		request.setAttribute("imgStateUnfun",imgStateUnfun);
 		
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
+		dispatcher.forward(request,response);	
 		
 	}
 
