@@ -14,12 +14,22 @@
 <link rel="stylesheet" href="./css/style.css">
 
 <script type="text/javascript">
+var tabSelected = 1;
+
 $(document).ready(function(){
 	$.ajaxSetup({ cache: false }); //Avoids Internet Explorer caching!	
 	$(document).on("click",".menu", async function(event) {
 		//$('#content').load('ContentController',{content: $(this).attr('id')});
 		const response = await fetch($(this).attr('id'));
 		$('#content').html(await response.text());
+		if($(this).attr('id') == "GetUserFunnies"){
+			tabSelected = 2;
+		}
+		else if($(this).attr('id') == "GetFollowedUsers"){
+			tabSelected = 3;
+		} else{
+			tabSelected = 1;
+		}
 		//$('#content').load($(this).attr('id'));
 		event.preventDefault();
 	});
@@ -38,10 +48,14 @@ $(document).ready(function(){
 	});
 	
 	/* Delete funny */
-	$(document).on("click",".delTweet",function(event){
+	$(document).on("click",".delFunny",function(event){
 		var funny = $(this).parent();
 		$.post( "DelFunny", { id: funny.attr("id") } , function(event) {
-			$("#content").load("GetOwnTimeline");				
+			if (tabSelected == 1){
+				$("#content").load("GetOwnTimeline");	
+			} else if (tabSelected == 2){
+				$("#content").load("GetUserFunnies");	
+			}
 		});
 		event.preventDefault();
 	});
@@ -50,7 +64,11 @@ $(document).ready(function(){
 	$(document).on("click",".likeFunny",function(event){
 		var funny = $(this).parent();
 		$.post( "LikeFunny", { id: funny.attr("id") }, function(event) {
-			$("#content").load("GetOwnTimeline");	
+			if (tabSelected == 1){
+				$("#content").load("GetOwnTimeline");	
+			} else if (tabSelected == 2){
+				$("#content").load("GetUserFunnies");	
+			}
 		});
 		
 		event.preventDefault();
@@ -60,7 +78,11 @@ $(document).ready(function(){
 	$(document).on("click",".dislikeFunny",function(event){
 		var funny = $(this).parent();
 		$.post( "DislikeFunny", { id: funny.attr("id") } , function(event) {
-			$("#content").load("GetOwnTimeline");				
+			if (tabSelected == 1){
+				$("#content").load("GetOwnTimeline");	
+			} else if (tabSelected == 2){
+				$("#content").load("GetUserFunnies");	
+			}			
 		});
 		event.preventDefault();
 	});
@@ -68,9 +90,15 @@ $(document).ready(function(){
 	/* Follow user */
 	$(document).on("click",".followUser",function(event){
 		var user = $(this).parent();
-		$.post( "FollowUser", { id: user.attr("id") }, function(event) { 
-			$("#content").load("GetFollowedUsers");
-		    $('#lrow2').load('GetNotFollowedUsers');
+		$.post( "FollowUser", { id: user.attr("id") }, function(event) {
+		    if (tabSelected == 1){
+			    $('#lrow2').load('GetNotFollowedUsers');
+			} else if (tabSelected == 2){
+			    $('#lrow2').load('GetNotFollowedUsers');	
+			} else if (tabSelected == 3){
+		    	$("#content").load("GetFollowedUsers");
+			    $('#lrow2').load('GetNotFollowedUsers');
+			}
 		});
 		event.preventDefault();
 	});
@@ -79,8 +107,14 @@ $(document).ready(function(){
 	$(document).on("click",".unfollowUser",function(event) {
 		var user = $(this).parent();
 		$.post( "UnFollowUser", { id: user.attr("id") }, function(event) {
-			$("#content").load("GetFollowedUsers");
-		    $('#lrow2').load('GetNotFollowedUsers');
+			if (tabSelected == 1){
+			    $('#lrow2').load('GetNotFollowedUsers');
+			} else if (tabSelected == 2){
+			    $('#lrow2').load('GetNotFollowedUsers');	
+			} else if (tabSelected == 3){
+		    	$("#content").load("GetFollowedUsers");
+			    $('#lrow2').load('GetNotFollowedUsers');
+			}
 		});
 		event.preventDefault();
 	});

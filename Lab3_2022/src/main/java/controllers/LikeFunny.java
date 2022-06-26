@@ -2,8 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Timestamp;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +12,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 
 import managers.Funteract;
-import managers.ManageFunnies;
 import models.Funny;
 import models.User;
 
 /**
- * Servlet implementation class AddTweetFromUser
+ * Servlet implementation class LikeFunny
  */
 @WebServlet("/LikeFunny")
 public class LikeFunny extends HttpServlet {

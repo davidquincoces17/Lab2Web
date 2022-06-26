@@ -17,7 +17,7 @@ import models.Funny;
 import models.User;
 
 /**
- * Servlet implementation class DelTweet
+ * Servlet implementation class DelFunny
  */
 @WebServlet("/DelFunny")
 public class DelFunny extends HttpServlet {
