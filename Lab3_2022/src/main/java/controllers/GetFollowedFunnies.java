@@ -37,14 +37,32 @@ public class GetFollowedFunnies extends HttpServlet {
 		List<Funny> funnies = Collections.emptyList();
 		List<Integer> funs = new ArrayList<Integer>();
 		List<Integer> unfuns = new ArrayList<Integer>();
+		List<String> imgStateFun = new ArrayList<String>();
+		List<String> imgStateUnfun = new ArrayList<String>();
+		
 		User user = (User) session.getAttribute("user");
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
 			funnies = funnyManager.getFollowedFunnies(user.getId(),0,4);
+			
+			Integer value = 0;
 			for (Funny f: funnies) {
 				funs.add(funnyManager.getLikes(f.getId()));
 				unfuns.add(funnyManager.getDislikes(f.getId()));
+				value = funnyManager.getFunnyReaction(user.getId(),f.getId());
+				
+				if(value == 0) {
+					imgStateFun.add("imgs/fun0.png");
+					imgStateUnfun.add("imgs/unfun1.png");
+				} else if(value == 1) {
+					imgStateFun.add("imgs/fun1.png");
+					imgStateUnfun.add("imgs/unfun0.png");
+				} else {
+					imgStateFun.add("imgs/fun0.png");
+					imgStateUnfun.add("imgs/unfun0.png");
+				}
+
 			}
 			funnyManager.finalize();
 		}
@@ -54,6 +72,8 @@ public class GetFollowedFunnies extends HttpServlet {
 		request.setAttribute("funnies",funnies);
 		request.setAttribute("funs",funs);
 		request.setAttribute("unfuns",unfuns);
+		request.setAttribute("imgStateFun",imgStateFun);
+		request.setAttribute("imgStateUnfun",imgStateUnfun);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFunnies.jsp"); 
 		dispatcher.forward(request,response);
 		
