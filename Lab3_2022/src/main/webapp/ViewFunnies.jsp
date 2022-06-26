@@ -17,9 +17,9 @@
    <button  type="button" class="likeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="${imgStateFun[loop.index]}" alt= "fun" style="height:24px; width:24px"></button>
    ${unfuns[loop.index]}
    <button type="button" class="dislikeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="${imgStateUnfun[loop.index]}" alt= "unfun" style="height:24px; width:24px"></button>
-   <button type="button" class="replyFunny w3-button w3-theme w3-margin-bottom"><i class="fa fa-reply"></i> &nbsp;Reply</button>
+   <button type="button" class="replyFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-reply"></i> &nbsp;Reply</button>
    <c:if test="${user.username.equals(t.authorUsername)}">
-   		<button type="button" class="delFunny w3-button w3-red w3-margin-bottom"><i class="fa fa-trash"></i> &nbsp;Delete</button>
+   		<button type="button" class="delFunny w3-button w3-red w3-margin-bottom" style="border-radius:8px"><i class="fa fa-trash"></i> &nbsp;Delete</button>
 	</c:if>
 	
    

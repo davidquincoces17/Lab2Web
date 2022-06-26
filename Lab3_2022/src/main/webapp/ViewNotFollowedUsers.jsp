@@ -9,6 +9,6 @@
 	<p>Friend Suggestion</p>
     <img class="w3-circle" src="${u.profilePhoto}" style="max-width:120px" alt="Avatar"><br><br>
     <div>@${u.username}</div>
-   	<button type="button" class="followUser w3-row w3-button w3-green w3-section"><i class="fa fa-user-plus"></i> &nbsp;Follow</button> 
+   	<button type="button" class="followUser w3-row w3-button w3-green w3-section" style="border-radius:8px"><i class="fa fa-user-plus"></i> &nbsp;Follow</button> 
 </div>
 </c:forEach>

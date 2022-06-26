@@ -42,8 +42,8 @@
 <div class="w3-container w3-card w3-round w3-white w3-section">
 	<h3 class="w3-opacity" style="font-size:20px"> Hello ${user.username}, would you like to share some Funny? </h3>
 	<p id="funnyContent" contenteditable="true" class="w3-border w3-padding"></p>
-	<button id="addFunny" type="button" class="w3-button w3-theme w3-green w3-section"><i class="fa fa-pencil"></i> &nbsp;Post</button>
-	<a id="remaining_chars"></a>
+	<button id="addFunny" type="button" class="w3-button w3-theme w3-green w3-section" style="border-radius:8px"><i class="fa fa-pencil"></i> &nbsp;Post</button>
+	<a id="remaining_chars" style="vertical-align:middle"></a>
 </div>
  
 <div id="iterator">
