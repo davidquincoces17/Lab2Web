@@ -230,7 +230,7 @@ public class User implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", mail=" + mail + ", pwd1=" + pwd1 + ", pwd2=" + pwd2 + ", nickname=" + nickname
-				+ ", gender=" + gender + ", birth=" + birth + ", error=" + Arrays.toString(error) + "]";
+				+ ", gender=" + gender + ", birth=" + birth + ", isAdmin=" + isAdmin + ", error=" + Arrays.toString(error) + "]";
 	}
 
 

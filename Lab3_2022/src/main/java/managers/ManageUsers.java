@@ -93,7 +93,7 @@ public class ManageUsers {
 
 	/* Get a user given its PK*/
 	public User getUser(Integer id) {
-		String query = "SELECT id,username,email,nickname,gender,profilePhoto FROM user WHERE id = ? ;";
+		String query = "SELECT id,username,email,nickname,gender,profilePhoto,isAdmin FROM user WHERE id = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -109,6 +109,12 @@ public class ManageUsers {
 				user.setNickname(rs.getString("nickname"));
 				user.setGender(rs.getString("gender"));
 				user.setProfilePhoto(rs.getString("profilePhoto"));
+				if(rs.getInt("isAdmin")==1) {
+					user.setAdmin(true);
+				}else {
+					user.setAdmin(false);
+				}
+				
 			}
 			rs.close();
 			statement.close();

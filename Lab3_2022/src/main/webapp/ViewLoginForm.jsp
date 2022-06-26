@@ -13,7 +13,7 @@
   	<input class="w3-input w3-border w3-light-grey" type="email" id="mail" name="mail" placeholder="Mail" value="${user.mail}" required pattern="^.{8,50}$"><br>
     <label class="w3-text-red" for="pwd1"> Password: </label><br>
   	<input class="w3-input w3-border w3-light-grey" type="password" id="pwd1" name="pwd1" placeholder="Password" value="${user.pwd1}" required pattern="^[A-Za-z\d@$!%?&_+\-*\/#]{8,50}$"><br>
-    <input class="w3-btn w3-red" type="submit" name="sumbit" value="Login">
+    <input class="w3-btn w3-red" style="border-radius:8px" type="submit" name="sumbit" value="Login">
     <label class="w3-text-red" style="padding-left:10px"> Don't have an account? You can register </label>
     <a class="w3-text-red menu" id="RegisterController" href=#><b>here</b></a> <br>
 
