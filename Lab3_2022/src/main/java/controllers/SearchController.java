@@ -18,16 +18,16 @@ import models.Funny;
 import models.User;
 
 /**
- * Servlet implementation class GetUserFunnies
+ * Servlet implementation class SearchController
  */
-@WebServlet("/GetUserFunnies")
-public class GetUserFunnies extends HttpServlet {
+@WebServlet("/SearchController")
+public class SearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetUserFunnies() {
+    public SearchController() {
         super();
     }
 
@@ -46,7 +46,7 @@ public class GetUserFunnies extends HttpServlet {
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
-			funnies = funnyManager.getUserFunnies(user.getId(),0,4);
+			funnies = funnyManager.getFunnySearch("'%"+"Hello"+"%'",0,4);
 			
 			Integer value = 0;
 			for (Funny f: funnies) {
@@ -74,7 +74,7 @@ public class GetUserFunnies extends HttpServlet {
 		request.setAttribute("unfuns",unfuns);
 		request.setAttribute("imgStateFun",imgStateFun);
 		request.setAttribute("imgStateUnfun",imgStateUnfun);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFunnies.jsp"); 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
 		dispatcher.forward(request,response);
 		
 	}
@@ -87,4 +87,3 @@ public class GetUserFunnies extends HttpServlet {
 	}
 
 }
-

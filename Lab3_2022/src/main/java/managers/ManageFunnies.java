@@ -191,4 +191,36 @@ public class ManageFunnies {
 		return value;
 	}
 	
+public List<Funny> getFunnySearch(String inputContent,Integer start, Integer end) {
+		
+		String query = "SELECT funny.id,funny.parentID,funny.authorID,funny.timestamp,funny.content,user.username,user.nickname,user.profilePhoto FROM funny INNER JOIN user ON funny.authorID = user.id WHERE content LIKE ? ORDER BY funny.timestamp DESC LIMIT ?,? ;";
+		System.out.print(query); 
+		PreparedStatement statement = null;
+		 List<Funny> l = new ArrayList<Funny>();
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setString(1,inputContent);
+			 statement.setInt(2,start);
+			 statement.setInt(3,end);
+			 ResultSet rs = statement.executeQuery();
+			 while (rs.next()) {
+				 Funny funny = new Funny();
+				 funny.setId(rs.getInt("id"));
+				 funny.setParentId(rs.getInt("parentID"));
+				 funny.setAuthorId(rs.getInt("authorID"));
+				 funny.setTimestamp(rs.getTimestamp("timestamp"));
+				 funny.setContent(rs.getString("content"));
+				 funny.setAuthorNickname(rs.getString("nickname"));
+				 funny.setAuthorUsername(rs.getString("username"));
+				 funny.setImage(rs.getString("profilePhoto"));
+				 l.add(funny);
+			 }
+			 rs.close();
+			 statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return  l;
+	}
+	
 }

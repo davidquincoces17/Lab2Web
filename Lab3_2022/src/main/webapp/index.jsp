@@ -27,7 +27,11 @@ $(document).ready(function(){
 		}
 		else if($(this).attr('id') == "GetFollowedUsers"){
 			tabSelected = 3;
-		} else{
+		}
+		else if($(this).attr('id') == "SearchController"){
+			tabSelected = 4;
+		}
+		else{
 			tabSelected = 1;
 		}
 		//$('#content').load($(this).attr('id'));
