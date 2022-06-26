@@ -119,6 +119,11 @@ $(document).ready(function(){
 		});
 		event.preventDefault();
 	});
+	
+	$(document).on("click","#getEditProfile",function(event){
+	    $("#content").load("GetEditProfile");
+		event.preventDefault();
+	});
 });
 </script>
 </head>
