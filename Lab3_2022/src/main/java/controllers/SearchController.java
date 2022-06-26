@@ -47,23 +47,11 @@ public class SearchController extends HttpServlet {
 		List<String> imgStateUnfun = new ArrayList<String>();
 		User user = (User) session.getAttribute("user");
 		Search search = new Search();
-		Boolean searchPrepared = false;
 		
 		try {
 			
 			if (session != null || user != null)
 				BeanUtils.populate(search, request.getParameterMap());
-				if(search.getSearchValue() != null) {
-					searchPrepared = true;
-				}
-				
-		} catch (IllegalAccessException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		if (session != null || user != null) {
-			if (searchPrepared) {
 				System.out.println("SEARCH PREPARED IS TRUE");
 				ManageFunnies funnyManager = new ManageFunnies();
 				String toSearch = "%"+search.getSearchValue()+"%";
@@ -90,23 +78,29 @@ public class SearchController extends HttpServlet {
 					}
 				}
 				funnyManager.finalize();
-				searchPrepared = false;
-				
-				
-			}
+		
 
-			request.setAttribute("funnies",funnies);
-			/*
-			request.setAttribute("user",user);
-			request.setAttribute("funnies",funnies);
-			request.setAttribute("funs",funs);
-			request.setAttribute("unfuns",unfuns);
-			request.setAttribute("imgStateFun",imgStateFun);
-			request.setAttribute("imgStateUnfun",imgStateUnfun);
-			*/
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
-			dispatcher.forward(request,response);
+				request.setAttribute("funnies",funnies);
+				request.setAttribute("user",user);
+				request.setAttribute("funnies",funnies);
+				request.setAttribute("funs",funs);
+				request.setAttribute("unfuns",unfuns);
+				request.setAttribute("imgStateFun",imgStateFun);
+				request.setAttribute("imgStateUnfun",imgStateUnfun);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
+				dispatcher.forward(request,response);
+			
+						
+				
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+				
+				
+				
+			
 		
 		
 		

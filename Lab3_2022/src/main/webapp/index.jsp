@@ -31,19 +31,10 @@ $(document).ready(function(){
 			tabSelected = 3;
 			$('#content').html(await response.text());
 
-		}/* else if($(this).attr('id') == "SearchController"){
-			tabSelected = 4;
-			inputVal = document.querySelector('#searchBox').value;
-			$.post( "SearchController", {searchValue: inputVal}, function(event) {
-				$("#content").load("SearchController");
-				
-			});
-		}*/ else{
+		} else{
 			tabSelected = 1;
 			$('#content').html(await response.text());
-
 		}
-		
 
 		//$('#content').load($(this).attr('id'));
 		event.preventDefault();
@@ -55,12 +46,12 @@ $(document).ready(function(){
 	});
 	
 	/* Search */
+	
 	$(document).on("click","#SearchController",function(event){
-		$.post( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(event) {
-			$("#content").load("SearchController");
-		});
+		$.post( "SearchController", {searchValue: document.querySelector('#searchBox').value});
 		event.preventDefault();
 	});
+	
 	
 	/* Add funny */
 	$(document).on("click","#addFunny",function(event){
@@ -79,7 +70,7 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				$("#content").load("SearchController");
+				//$("#content").load("SearchController");
 			}
 		});
 		event.preventDefault();
@@ -94,7 +85,7 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				$("#content").load("SearchController");
+				//$("#content").load("SearchController");
 			}
 		});
 		
@@ -110,7 +101,7 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				$("#content").load("SearchController");
+				//$("#content").load("SearchController");
 			}
 		});
 		event.preventDefault();
