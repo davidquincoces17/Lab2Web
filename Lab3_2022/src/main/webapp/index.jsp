@@ -93,6 +93,7 @@ $(document).ready(function(){
 		$.post( "FollowUser", { id: user.attr("id") }, function(event) {
 		    if (tabSelected == 1){
 			    $('#lrow2').load('GetNotFollowedUsers');
+			    $("#content").load("GetOwnTimeline");
 			} else if (tabSelected == 2){
 			    $('#lrow2').load('GetNotFollowedUsers');	
 			} else if (tabSelected == 3){
