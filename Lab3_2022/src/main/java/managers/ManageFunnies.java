@@ -172,5 +172,23 @@ public class ManageFunnies {
 		return value;
 	}
 	
+	public int getFunnyReaction(Integer userID,Integer funnyID) {
+		String query = "SELECT state FROM `funstate` WHERE (`userID` = ?) AND (`funnyID` = ?)";
+		PreparedStatement statement = null;
+		int value = 0;
+		 try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,userID);
+			 statement.setInt(2,funnyID);
+			 ResultSet rs = statement.executeQuery();
+			 rs.next();
+			 value = rs.getInt("state");
+			 rs.close();
+			 statement.close();
+		 }catch (SQLException e) {
+			return 3;
+		}
+		return value;
+	}
 	
 }
