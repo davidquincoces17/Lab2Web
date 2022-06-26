@@ -53,8 +53,10 @@ public class SearchController extends HttpServlet {
 			
 			if (session != null || user != null)
 				BeanUtils.populate(search, request.getParameterMap());
-				searchPrepared = true;
-
+				if(search.getSearchValue() != null) {
+					searchPrepared = true;
+				}
+				
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,16 +65,12 @@ public class SearchController extends HttpServlet {
 		if (session != null || user != null) {
 			if (searchPrepared) {
 				System.out.println("SEARCH PREPARED IS TRUE");
-				//System.out.println("HOLAAAAAAAAAAAAAAAAAAA");
-				//System.out.println(something);
-				//System.out.println(something.get("search"));
 				ManageFunnies funnyManager = new ManageFunnies();
 				String toSearch = "%"+search.getSearchValue()+"%";
-				System.out.println("--------> " + search.getSearchValue());
+				System.out.println("--------> " + toSearch);
 				if(toSearch != null) {
-					funnies = funnyManager.getFunnySearch(toSearch,0,10);
+					funnies = funnyManager.getFunnySearch(toSearch,0,4);
 				}
-				
 				
 				Integer value = 0;
 				for (Funny f: funnies) {
@@ -96,12 +94,16 @@ public class SearchController extends HttpServlet {
 				
 				
 			}
+
+			request.setAttribute("funnies",funnies);
+			/*
 			request.setAttribute("user",user);
 			request.setAttribute("funnies",funnies);
 			request.setAttribute("funs",funs);
 			request.setAttribute("unfuns",unfuns);
 			request.setAttribute("imgStateFun",imgStateFun);
 			request.setAttribute("imgStateUnfun",imgStateUnfun);
+			*/
 			RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp"); 
 			dispatcher.forward(request,response);
 		}

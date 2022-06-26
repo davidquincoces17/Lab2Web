@@ -25,28 +25,26 @@ $(document).ready(function(){
 		
 		if($(this).attr('id') == "GetUserFunnies"){
 			tabSelected = 2;
+			$('#content').html(await response.text());
 
 		} else if($(this).attr('id') == "GetFollowedUsers"){
 			tabSelected = 3;
+			$('#content').html(await response.text());
 
-		} else if($(this).attr('id') == "SearchController"){
+		}/* else if($(this).attr('id') == "SearchController"){
 			tabSelected = 4;
 			inputVal = document.querySelector('#searchBox').value;
 			$.post( "SearchController", {searchValue: inputVal}, function(event) {
 				$("#content").load("SearchController");
 				
 			});
-		} else{
+		}*/ else{
 			tabSelected = 1;
+			$('#content').html(await response.text());
 
 		}
 		
 
-		$('#content').html(await response.text());
-		
-		
-		
-		
 		//$('#content').load($(this).attr('id'));
 		event.preventDefault();
 	});
@@ -54,6 +52,14 @@ $(document).ready(function(){
 	$(document).on("submit","form", function(event) {
 		$('#content').load($(this).attr('action'),$(this).serialize());
 	    event.preventDefault();
+	});
+	
+	/* Search */
+	$(document).on("click","#SearchController",function(event){
+		$.post( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(event) {
+			$("#content").load("SearchController");
+		});
+		event.preventDefault();
 	});
 	
 	/* Add funny */
