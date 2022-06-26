@@ -1,10 +1,10 @@
 package controllers;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,8 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import managers.ManageFunnies;
 import models.Funny;
+import models.Search;
 import models.User;
 
 /**
@@ -43,11 +46,34 @@ public class SearchController extends HttpServlet {
 		List<String> imgStateFun = new ArrayList<String>();
 		List<String> imgStateUnfun = new ArrayList<String>();
 		User user = (User) session.getAttribute("user");
+		Search search = new Search();
+		Boolean searchPrepared = false;
 		
+		try {
+			
+			if (session != null || user != null)
+				BeanUtils.populate(search, request.getParameterMap());
+				searchPrepared = true;
+
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		if (session != null || user != null) {
+			if (searchPrepared) {
+				System.out.println("SEARCH PREPARED IS TRUE");
+			}
+			//System.out.println("HOLAAAAAAAAAAAAAAAAAAA");
+			//System.out.println(something);
+			//System.out.println(something.get("search"));
 			ManageFunnies funnyManager = new ManageFunnies();
-			String toSearch = "%fun%";
-			funnies = funnyManager.getFunnySearch(toSearch,0,10);
+			String toSearch = "%"+search.getSearchValue()+"%";
+			System.out.println("--------> " + search.getSearchValue());
+			if(toSearch != null) {
+				funnies = funnyManager.getFunnySearch(toSearch,0,10);
+			}
+			
 			
 			Integer value = 0;
 			for (Funny f: funnies) {

@@ -5,7 +5,7 @@
 	<a class="w3-bar-item w3-button" href="MainController" style="width:70px;padding:10px 20px"> <i class="fa fa-home" aria-hidden="true"></i> </a>
 	<a class="menu w3-bar-item w3-button w3-hide-small" id="GetUserFunnies" style="width:120px;padding:10px 20px" href=#> My profile </a>
 	<a class="menu w3-bar-item w3-button w3-hide-small" id="GetFollowedUsers" style="width:120px;padding:10px 20px" href=#> Friends </a>
-	<input class="w3-bar-item menu-input" placeholder="Search Funnies" type="text" style="width:20%; margin-top:4px">
+	<input class="w3-bar-item menu-input" id="searchBox" placeholder="Search Funnies" type="text" style="width:20%; margin-top:4px">
 	<a class="menu w3-bar-item w3-button w3-hide-small" id="SearchController" style="margin-top:1px" href=#><i class="fa fa-search"></i> </a>
 	<a class="menu w3-bar-item w3-button w3-hide-small w3-right" id="LogoutController" style="width:120px;padding:10px 20px" href=#> <span>Logout</span><i class="fa fa-sign-out" style="margin-left:5px;"></i> </a>
 	<a class= "w3-right" href="MainController"> <img src="imgs/SimpleLogo.png" alt= "logo" style="height:34px; margin-right:8px;margin-top:4px"></a><br>

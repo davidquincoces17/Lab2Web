@@ -200,7 +200,7 @@ public List<Funny> getFunnySearch(String inputContent,Integer start, Integer end
 			 statement.setString(1,inputContent);
 			 statement.setInt(2,start);
 			 statement.setInt(3,end);
-			 System.out.println(statement);
+			 //System.out.println(statement);
 			 ResultSet rs = statement.executeQuery();
 			 while (rs.next()) {
 				 Funny funny = new Funny();

@@ -15,25 +15,38 @@
 
 <script type="text/javascript">
 var tabSelected = 1;
+var searchValue = "";
 
 $(document).ready(function(){
 	$.ajaxSetup({ cache: false }); //Avoids Internet Explorer caching!	
 	$(document).on("click",".menu", async function(event) {
 		//$('#content').load('ContentController',{content: $(this).attr('id')});
 		const response = await fetch($(this).attr('id'));
-		$('#content').html(await response.text());
+		
 		if($(this).attr('id') == "GetUserFunnies"){
 			tabSelected = 2;
-		}
-		else if($(this).attr('id') == "GetFollowedUsers"){
+
+		} else if($(this).attr('id') == "GetFollowedUsers"){
 			tabSelected = 3;
-		}
-		else if($(this).attr('id') == "SearchController"){
+
+		} else if($(this).attr('id') == "SearchController"){
 			tabSelected = 4;
-		}
-		else{
+			inputVal = document.querySelector('#searchBox').value;
+			$.post( "SearchController", {searchValue: inputVal}, function(event) {
+				$("#content").load("SearchController");
+				
+			});
+		} else{
 			tabSelected = 1;
+
 		}
+		
+
+		$('#content').html(await response.text());
+		
+		
+		
+		
 		//$('#content').load($(this).attr('id'));
 		event.preventDefault();
 	});
@@ -59,6 +72,8 @@ $(document).ready(function(){
 				$("#content").load("GetOwnTimeline");	
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
+			} else if (tabSelected == 4){
+				$("#content").load("SearchController");
 			}
 		});
 		event.preventDefault();
@@ -72,6 +87,8 @@ $(document).ready(function(){
 				$("#content").load("GetOwnTimeline");	
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
+			} else if (tabSelected == 4){
+				$("#content").load("SearchController");
 			}
 		});
 		
@@ -86,7 +103,9 @@ $(document).ready(function(){
 				$("#content").load("GetOwnTimeline");	
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
-			}			
+			} else if (tabSelected == 4){
+				$("#content").load("SearchController");
+			}
 		});
 		event.preventDefault();
 	});
@@ -103,6 +122,8 @@ $(document).ready(function(){
 			} else if (tabSelected == 3){
 		    	$("#content").load("GetFollowedUsers");
 			    $('#lrow2').load('GetNotFollowedUsers');
+			} else if (tabSelected == 4){
+			    $('#lrow2').load('GetNotFollowedUsers');	
 			}
 		});
 		event.preventDefault();
