@@ -190,7 +190,7 @@ $(document).ready(function(){
 
 		</div>
 		<!-- Middle Column -->
-		<div class="e3-container w3-col m8" style="margin-top:30px">
+		<div class="e3-container w3-col m8" style="margin-top:30px; margin-bottom:30px">
 			<div id="content">
 				<jsp:include page="${content}" />
 			</div>
