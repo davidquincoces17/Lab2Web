@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="false"%>
     
-<div class="w3-bar primary-color">
+<div class="w3-bar primary-color" style="position:fixed;top:0;z-index:100">
 	<a class="w3-bar-item w3-button" id="LogoutController" href="MainController"> <i class="fa fa-home" aria-hidden="true"></i> </a>
 	<a class="menu w3-bar-item w3-button w3-hide-small" id="RegisterController" href=#> Registration </a> 
 	<a class="menu w3-bar-item w3-button w3-hide-small" id="LoginController" href="MainController"> Login </a> 
