@@ -20,24 +20,26 @@
    <button type="button" class="dislikeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="${imgStateUnfun[loop.index]}" alt= "unfun" style="height:24px; width:24px"></button>
    <button type="button" class="replyFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-reply"></i> &nbsp;Reply</button>
    
-	<c:if test="${user.username.equals(t.authorUsername)}">
-   	<button type="button" class="delFunny w3-button w3-red w3-margin-bottom" style="border-radius:8px"><i class="fa fa-trash"></i> &nbsp;Delete</button>
-	</c:if>
+<%-- 	<c:if test="${user.username.equals(t.authorUsername)}"> --%>
+<!--    	<button type="button" class="editFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-edit"></i> &nbsp;Edit</button>   	 -->
+<!--    	<button type="button" class="delFunny w3-button w3-red w3-margin-bottom" style="border-radius:8px"><i class="fa fa-trash"></i> &nbsp;Delete</button> -->
+<%-- 	</c:if> --%>
 		
 	
-<%-- 	<c:choose> --%>
+	<c:choose>
 	
-<%-- 		<c:when test="${user.username.equals(t.authorUsername)}"> --%>
-<!--    		<button type="button" class="delFunny w3-button w3-red w3-margin-bottom" style="border-radius:8px"><i class="fa fa-trash"></i> &nbsp;Delete</button> -->
-<%-- 		</c:when> --%>
+		<c:when test="${user.username.equals(t.authorUsername)}">
+		<button type="button" class="editFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-edit"></i> &nbsp;Edit</button> 
+   		<button type="button" class="delFunny w3-button w3-red w3-margin-bottom" style="border-radius:8px"><i class="fa fa-trash"></i> &nbsp;Delete</button>
+		</c:when>
 		
 		
-<%-- 		<c:when test="${user.isAdmin.equals(true)}"> --%>
-<!-- 		<button type="button" class="delFunny w3-button w3-red w3-margin-bottom" style="border-radius:8px"><i class="fa fa-trash"></i> &nbsp;Delete</button> -->
-<%-- 		</c:when> --%>
+		<c:when test="${isAdmin.equals(true)}">
+		<button type="button" class="delFunny w3-button w3-red w3-margin-bottom" style="border-radius:8px"><i class="fa fa-trash"></i> &nbsp;Delete</button>
+		</c:when>
 		
 		
-<%-- 	</c:choose> --%>
+	</c:choose>
 
  </div>
 </c:forEach>

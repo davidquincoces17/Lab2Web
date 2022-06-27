@@ -62,7 +62,7 @@ public class LoginController extends HttpServlet {
 		     
 				System.out.println("user is not logged, forwarding to ViewLoginForm ");
 			    request.setAttribute("user", user);
-			    request.setAttribute("error", true);
+			    request.setAttribute("failed", true);
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
 			    dispatcher.forward(request, response);
 		    	
