@@ -176,7 +176,7 @@ $(document).ready(function(){
 	<!-- End Navigation -->
 
 	<!-- Begin Content -->
-	<div class="w3-row-padding">
+	<div class="w3-row-padding" style="padding-top:30px">
 		<!-- Left Column -->
 		<div class="w3-container w3-col m3 w3-hide-small w3-hide-medium">
 			<div id="lcolumn">
