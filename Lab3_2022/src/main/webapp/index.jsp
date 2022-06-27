@@ -49,7 +49,8 @@ $(document).ready(function(){
 	
 	/* Search */
 	$(document).on("click","#SearchController",function(event){
-		$.post( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(funnies) {
+		tabSelected = 4;
+		$.get( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(funnies) {
 			$("#content").html(funnies);
 		});
 		event.preventDefault();
@@ -73,7 +74,9 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				$("#content").load("SearchController");
+				$.get( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(funnies) {
+					$("#content").html(funnies);
+				});
 			}
 		});
 		event.preventDefault();
@@ -95,7 +98,9 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				$("#content").load("SearchController");
+				$.get( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(funnies) {
+					$("#content").html(funnies);
+				});
 			}
 		});
 		
@@ -111,7 +116,9 @@ $(document).ready(function(){
 			} else if (tabSelected == 2){
 				$("#content").load("GetUserFunnies");	
 			} else if (tabSelected == 4){
-				$("#content").load("SearchController");
+				$.get( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(funnies) {
+					$("#content").html(funnies);
+				});
 			}
 		});
 		event.preventDefault();
