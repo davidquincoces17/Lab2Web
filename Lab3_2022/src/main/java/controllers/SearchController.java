@@ -59,11 +59,8 @@ public class SearchController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			System.out.println("SEARCH PREPARED IS TRUE");
 			ManageFunnies funnyManager = new ManageFunnies();
 			String toSearch = "%"+search.getSearchValue()+"%";
-			System.out.println("--------> " + toSearch);
-
 			
 			funnies = funnyManager.getFunnySearch(toSearch,0,20);
 			
