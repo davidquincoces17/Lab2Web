@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import managers.ManageFunnies;
+import managers.ManageUsers;
 import models.Funny;
 import models.User;
 
@@ -43,10 +44,14 @@ public class GetUserFunnies extends HttpServlet {
 		List<String> imgStateFun = new ArrayList<String>();
 		List<String> imgStateUnfun = new ArrayList<String>();
 		User user = (User) session.getAttribute("user");
+		ManageUsers userManager = new ManageUsers();
+		boolean isAdmin = false;
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
 			funnies = funnyManager.getUserFunnies(user.getId(),0,4);
+			user = userManager.getUser(user.getId());
+			isAdmin = user.isAdmin();
 			
 			Integer value = 0;
 			for (Funny f: funnies) {
@@ -68,6 +73,8 @@ public class GetUserFunnies extends HttpServlet {
 			funnyManager.finalize();
 		}
 
+		System.out.println("Is user admin? (i'm getuserfunnies) -->" + user.isAdmin());
+		request.setAttribute("isAdmin", isAdmin);
 		request.setAttribute("user",user);
 		request.setAttribute("funnies",funnies);
 		request.setAttribute("funs",funs);

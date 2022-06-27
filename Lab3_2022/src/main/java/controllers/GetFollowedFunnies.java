@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import managers.ManageFunnies;
+import managers.ManageUsers;
 import models.Funny;
 import models.User;
 
@@ -39,12 +40,16 @@ public class GetFollowedFunnies extends HttpServlet {
 		List<Integer> unfuns = new ArrayList<Integer>();
 		List<String> imgStateFun = new ArrayList<String>();
 		List<String> imgStateUnfun = new ArrayList<String>();
+		boolean isAdmin = false;
 		
 		User user = (User) session.getAttribute("user");
+		ManageUsers userManager = new ManageUsers();
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
 			funnies = funnyManager.getFollowedFunnies(user.getId(),0,4);
+			user = userManager.getUser(user.getId());
+			isAdmin = user.isAdmin();
 			
 			Integer value = 0;
 			for (Funny f: funnies) {
@@ -65,15 +70,17 @@ public class GetFollowedFunnies extends HttpServlet {
 
 			}
 			funnyManager.finalize();
+			userManager.finalize();
 		}
-		
-
+		System.out.println("Is user admin? (i'm getfollowedfunnies) -->" + user.isAdmin());
+		request.setAttribute("isAdmin", isAdmin);
 		request.setAttribute("user",user);
 		request.setAttribute("funnies",funnies);
 		request.setAttribute("funs",funs);
 		request.setAttribute("unfuns",unfuns);
 		request.setAttribute("imgStateFun",imgStateFun);
 		request.setAttribute("imgStateUnfun",imgStateUnfun);
+//		request.setAttribute("isAdmin", isAdmin);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFunnies.jsp"); 
 		dispatcher.forward(request,response);
 		

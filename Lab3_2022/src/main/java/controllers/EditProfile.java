@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class GetOwnTimeline
  */
-@WebServlet("/GetEditProfile")
-public class GetEditProfile extends HttpServlet {
+@WebServlet("/EditProfile")
+public class EditProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetEditProfile() {
+    public EditProfile() {
         super();
     }
 

@@ -81,6 +81,4 @@ public class Funny implements java.io.Serializable {
 		this.image = image;
 	}
 
-
-
 }

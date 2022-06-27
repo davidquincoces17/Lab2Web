@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" session="false" %>
+	pageEncoding="UTF-8" session="false"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="icon" href="imgs/favicon_funnier.png">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title> Lab 3 FUNNIER </title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Lab 4 FUNNIER</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/style.css">
 
 <script type="text/javascript">
@@ -46,7 +48,6 @@ $(document).ready(function(){
 	});
 	
 	/* Search */
-	
 	$(document).on("click","#SearchController",function(event){
 		$.post( "SearchController", {searchValue: document.querySelector('#searchBox').value});
 		event.preventDefault();
@@ -73,6 +74,13 @@ $(document).ready(function(){
 				$("#content").load("SearchController");
 			}
 		});
+		event.preventDefault();
+	});
+	
+	/* Edit funny */
+	$(document).on("click", ".editFunny", function(event){
+		var funny = $(this).parent();
+		$("#content").load("EditFunny", { id: funny.attr("id") });
 		event.preventDefault();
 	});
 	
@@ -143,8 +151,8 @@ $(document).ready(function(){
 	});
 	
 	/* Edit profile */
-	$(document).on("click","#getEditProfile",function(event){
-	    $("#content").load("GetEditProfile");
+	$(document).on("click","#EditProfile",function(event){
+	    $("#content").load("EditProfile");
 		event.preventDefault();
 	});
 });
@@ -152,15 +160,15 @@ $(document).ready(function(){
 </head>
 <body>
 
- 	<!-- Begin Navigation -->
- 	<div class="w3-bar primary-color" id="navigation">
-    <jsp:include page="${menu}" />
- 	</div>
- 	<!-- End Navigation -->
- 
+	<!-- Begin Navigation -->
+	<div class="w3-bar primary-color" id="navigation">
+		<jsp:include page="${menu}" />
+	</div>
+	<!-- End Navigation -->
+
 	<!-- Begin Content -->
 	<div class="w3-row-padding">
-	 	<!-- Left Column -->
+		<!-- Left Column -->
 		<div class="w3-container w3-col m3 w3-hide-small">
 			<div id="lcolumn">
 				<div id="lrow1">
@@ -170,21 +178,21 @@ $(document).ready(function(){
 					<p></p>
 				</div>
 			</div>
-			
+
 		</div>
-		<!-- Middle Column -->	
+		<!-- Middle Column -->
 		<div class="e3-container w3-col m8">
 			<div id="content">
-			<jsp:include page="${content}" />
+				<jsp:include page="${content}" />
 			</div>
 		</div>
 	</div>
 	<!-- End Content -->
 	<!-- Footer -->
 	<footer class="w3-container w3-theme">
-	  <p> Universitat Pompeu Fabra </p>
+		<p>Funnier :)</p>
 	</footer>
-	
+
 	<script>
 		function stack() {
   			var x = document.getElementById("stack");
@@ -196,5 +204,5 @@ $(document).ready(function(){
 		}
 	</script>
 
-  </body>
+</body>
 </html>
