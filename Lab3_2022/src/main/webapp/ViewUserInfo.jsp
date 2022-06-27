@@ -12,8 +12,7 @@
   		<span class="w3-opacity"> &nbsp &nbsp &nbsp @${user.username} </span>
   	</div><br>
   	<div style=padding-left:20px>
-  		<button type="button" id="EditProfile" style="height:35px;width:90px;font-size:10px;padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px" class="editUser w3-button w3-white w3-border  w3-round-large"><i class="fa fa-user fa-2x"></i> &nbsp;Edit</button>
-  		<button type="button" style="height:35px;width:40px;font-size:10px;padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px" class="editUser w3-button w3-white w3-border  w3-round-large"><i class="fa fa-user-plus fa-2x"></i></button>
+  		<button type="button" id="EditProfile" style="height:35px;width:90px;font-size:10px;padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;margin-top:-20px" class="editUser w3-button w3-white w3-border  w3-round-large"><i class="fa fa-user fa-2x"></i> &nbsp;Edit</button>
   	</div>
   </div>
   </div>

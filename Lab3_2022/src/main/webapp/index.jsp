@@ -178,7 +178,7 @@ $(document).ready(function(){
 	<!-- Begin Content -->
 	<div class="w3-row-padding">
 		<!-- Left Column -->
-		<div class="w3-container w3-col m3 w3-hide-small">
+		<div class="w3-container w3-col m3 w3-hide-small w3-hide-medium">
 			<div id="lcolumn">
 				<div id="lrow1">
 					<p></p>
@@ -198,7 +198,7 @@ $(document).ready(function(){
 	</div>
 	<!-- End Content -->
 	<!-- Footer -->
-	<footer class="w3-container w3-theme">
+	<footer class="w3-container w3-bottom w3-theme w3-right-align">
 		<p>Funnier :)</p>
 	</footer>
 
