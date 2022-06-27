@@ -35,8 +35,6 @@ public class ManageFunnies {
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
-			// statement.setInt(1,funny.getId());
-			// statement.setInt(2,funny.getParentId());
 			statement.setInt(1, funny.getAuthorId());
 			statement.setString(2, funny.getContent());
 			statement.setTimestamp(3, funny.getTimestamp());

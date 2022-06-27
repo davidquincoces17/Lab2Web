@@ -10,24 +10,24 @@
 
 
 <form style="padding: 20px" action="RegisterController" method="post" id="myform">
-  <label class="w3-text-red" for="username"> User name:</label><br>
+  <label class="w3-text-red" style="font-size:18px" for="username"> User name:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="text" id="username" name="username" placeholder="Name" onfocusout="checkUniqueness('username')" value="${model.username}" required pattern="^[a-zA-Z\d_]{1,10}$"><br>
-  <label class="w3-text-red" for="mail"> Mail:</label><br>
+  <label class="w3-text-red" style="font-size:18px" for="mail"> Mail:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="email" id="mail" name="mail" placeholder="Mail" onfocusout="checkUniqueness('email')" value="${model.mail}" required pattern="^.{8,50}$"><br>
-  <label class="w3-text-red" for="pwd1"> Password: </label><br>
+  <label class="w3-text-red" style="font-size:18px" for="pwd1"> Password: </label><br>
   <input class="w3-input w3-border w3-light-grey" type="password" id="pwd1" name="pwd1" placeholder="Password" value="${model.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&_+\-*\/#])[A-Za-z\d@$!%?&_+\-*\/#]{8,50}$"><br>
-  <label class="w3-text-red" for="pwd2"> Confirm Password: </label><br>
+  <label class="w3-text-red" style="font-size:18px" for="pwd2"> Confirm Password: </label><br>
   <input class="w3-input w3-border w3-light-grey" type="password" id="pwd2" name="pwd2" placeholder="Confirm Password" value="${model.pwd2}" required><br>
-  <label class="w3-text-red" for="nickname"> Nickname:</label><br>
+  <label class="w3-text-red" style="font-size:18px" for="nickname"> Nickname:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="text" id="nickname" name="nickname" placeholder="Nickname" value="${model.nickname}" required pattern="^.{1,30}$"><br>
-  <label class="w3-text-red" for="gender"> Gender:</label><br>
+  <label class="w3-text-red" style="font-size:18px" for="gender"> Gender:</label><br>
   <select class="w3-select" id="gender" name="gender">
   	<option value="1">Male</option>
   	<option value="2">Female</option>
   	<option value="3">Prefer not to say</option>
   	<option value="4">Other</option>
   </select><br><br>
-  <label class="w3-text-red" for="birth"> Date of birth:</label><br>
+  <label class="w3-text-red" style="font-size:18px" for="birth"> Date of birth:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="date" id="birth" name="birth" placeholder="Birth" value="${model.birth}" min="1900-01-01" max="2500-01-01" required pattern="^\d{4}-\d{2}-\d{2}$"><br>
   <button class="w3-btn w3-red" style="border-radius:8px"> Sign up </button>
 </form>
