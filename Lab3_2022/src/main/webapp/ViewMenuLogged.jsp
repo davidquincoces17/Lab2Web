@@ -8,7 +8,7 @@
 	<input class="w3-bar-item menu-input w3-hide-small w3-hide-medium" id="searchBox" placeholder="Search Funnies" type="text" style="width:20%; margin-top:4px;border-radius:8px;margin-left:5px">
 	<a class="w3-bar-item w3-button w3-hide-small w3-hide-medium" id="SearchController" style="margin-top:1px;border-radius:8px;margin-left:4px"><i class="fa fa-search" href=#></i> </a>
 	<a class="menu w3-bar-item w3-button w3-hide-small w3-right" id="LogoutController" style="width:120px;padding:10px 20px" href=#> <span>Logout</span><i class="fa fa-sign-out" style="margin-left:5px;"></i> </a>
-	<a class= "w3-right" href="MainController"> <img src="imgs/SimpleLogo.png" alt= "logo" style="height:34px; margin-right:8px;margin-top:4px"></a><br>
+	<a class= "w3-right" href="MainController"> <img src="imgs/SimpleLogo.png" alt= "logo" style="height:34px; margin-right:8px;margin-top:4px"></a>
 	<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
 </div>
 
