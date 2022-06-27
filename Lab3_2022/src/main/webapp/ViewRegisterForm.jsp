@@ -4,12 +4,12 @@
 
 
 
+<div style="background-color: #fff5ee; border-radius: 5px; margin-right:25%;margin-top:20px; border:dashed 1px #F5B354">
+
+<a href="MainController"> <img src="imgs/FunnierSmall.png" alt= "logo" style="height: 80px; margin-bottom: 20px; margin-top: 20px; margin-left:20px"></a>
 
 
-<a href="MainController"> <img src="imgs/FunnierSmall.png" alt= "logo" style="height:80px; margin-bottom:20px; margin-top:20px"></a>
-
-
-<form action="RegisterController" method="post" id="myform">
+<form style="padding: 20px" action="RegisterController" method="post" id="myform">
   <label class="w3-text-red" for="username"> User name:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="text" id="username" name="username" placeholder="Name" onfocusout="checkUniqueness('username')" value="${model.username}" required pattern="^[a-zA-Z\d_]{1,10}$"><br>
   <label class="w3-text-red" for="mail"> Mail:</label><br>
@@ -33,7 +33,7 @@
 </form>
 
 
-
+</div>
 
 <div id="errors">
 	<ul>
