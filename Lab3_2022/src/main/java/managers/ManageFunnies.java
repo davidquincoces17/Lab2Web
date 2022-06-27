@@ -189,7 +189,7 @@ public class ManageFunnies {
 	}
 
 	/* Get Funny by Id */
-	public Funny getFunny(Integer id) {
+	public Funny getFunny(int id) {
 		String query = "SELECT * FROM funny WHERE id = ?";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
@@ -212,7 +212,7 @@ public class ManageFunnies {
 		}
 		return funny;
 	}
-	
+
 	/* Update Funny given its Id and the new content */
 	public void updateFunny(Integer id, String content) {
 		String query = "UPDATE funny SET funny.content=? WHERE funny.id=?";

@@ -48,6 +48,7 @@ public class EditFunny extends HttpServlet {
 			
 			if (session != null || user != null)
 				BeanUtils.populate(funny, request.getParameterMap());
+				System.out.println("Id of prompted funny to edit:" + funny.getId());
 				funny = funnyManager.getFunny(funny.getId());
 				user = userManager.getUser(user.getId());
 				if(user.getId() == funny.getAuthorId()) {

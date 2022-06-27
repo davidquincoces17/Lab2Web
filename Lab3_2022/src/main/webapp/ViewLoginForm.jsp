@@ -8,7 +8,7 @@
 <a href="MainController"> <img src="imgs/FunnierSmall.png" alt= "logo" style="height:80px; margin-bottom:20px"></a><br>
 
 <c:if test = "${failed}">
-<div style="background-color:#F4D45E" class="w3-panel w3-animate-fade w3-theme-l4 w3-display-container">
+<div style="background-color:#F4D45E" class="w3-panel w3-animate-opacity w3-theme-l4 w3-display-container">
   <span onclick="this.parentElement.style.display='none'"
   class="w3-button w3-large w3-display-topright">&times;</span>
   <h3> Identification error </h3>
