@@ -49,7 +49,9 @@ $(document).ready(function(){
 	
 	/* Search */
 	$(document).on("click","#SearchController",function(event){
-		$.post( "SearchController", {searchValue: document.querySelector('#searchBox').value});
+		$.post( "SearchController", {searchValue: document.querySelector('#searchBox').value}, function(funnies) {
+			$("#content").html(funnies);
+		});
 		event.preventDefault();
 	});
 	

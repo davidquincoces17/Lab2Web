@@ -49,8 +49,8 @@ public class SearchController extends HttpServlet {
 		
 		User user = (User) session.getAttribute("user");
 		Search search = new Search();
-
-			
+		
+		
 		if (session != null || user != null) {
 			try {
 				BeanUtils.populate(search, request.getParameterMap());
@@ -58,12 +58,15 @@ public class SearchController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			System.out.println("SEARCH PREPARED IS TRUE");
 			ManageFunnies funnyManager = new ManageFunnies();
 			String toSearch = "%"+search.getSearchValue()+"%";
 			System.out.println("--------> " + toSearch);
 
-			funnies = funnyManager.getFunnySearch(toSearch,0,4);
+			
+			funnies = funnyManager.getFunnySearch(toSearch,0,20);
+			
 			
 			Integer value = 0;
 			for (Funny f: funnies) {
@@ -83,10 +86,14 @@ public class SearchController extends HttpServlet {
 				}
 			}
 			
+			
+			
 			funnyManager.finalize();
 		}
-
+		
+		
 		request.setAttribute("funnies",funnies);
+		
 		request.setAttribute("user",user);
 		request.setAttribute("funnies",funnies);
 		request.setAttribute("funs",funs);

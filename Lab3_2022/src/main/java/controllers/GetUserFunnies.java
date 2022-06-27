@@ -49,7 +49,7 @@ public class GetUserFunnies extends HttpServlet {
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
-			funnies = funnyManager.getUserFunnies(user.getId(),0,4);
+			funnies = funnyManager.getUserFunnies(user.getId(),0,20);
 			user = userManager.getUser(user.getId());
 			isAdmin = user.isAdmin();
 			

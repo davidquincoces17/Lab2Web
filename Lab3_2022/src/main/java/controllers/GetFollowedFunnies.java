@@ -47,7 +47,7 @@ public class GetFollowedFunnies extends HttpServlet {
 		
 		if (session != null || user != null) {
 			ManageFunnies funnyManager = new ManageFunnies();
-			funnies = funnyManager.getFollowedFunnies(user.getId(),0,4);
+			funnies = funnyManager.getFollowedFunnies(user.getId(),0,20);
 			user = userManager.getUser(user.getId());
 			isAdmin = user.isAdmin();
 			
