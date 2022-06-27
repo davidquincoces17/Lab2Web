@@ -291,9 +291,6 @@ public class ManageUsers {
 	public void updateUser(int id, String pwd1, String nickname, String gender, String birth) {
 		String query = "UPDATE user SET user.password= ?, user.nickname= ?, user.gender= ?, user.birth= ? WHERE user.id= ?;";
 		PreparedStatement statement = null;
-		int test = Integer.parseInt(gender);
-		test --;
-		gender = String.valueOf(test);
 		try {
 			statement = db.prepareStatement(query);
 			statement.setString(1, pwd1);
