@@ -151,8 +151,8 @@ $(document).ready(function(){
 	});
 	
 	/* Edit profile */
-	$(document).on("click","#getEditProfile",function(event){
-	    $("#content").load("GetEditProfile");
+	$(document).on("click","#EditProfile",function(event){
+	    $("#content").load("EditProfile");
 		event.preventDefault();
 	});
 });
@@ -189,7 +189,7 @@ $(document).ready(function(){
 	</div>
 	<!-- End Content -->
 	<!-- Footer -->
-	<footer class="w3-container w3-theme w3-bottom">
+	<footer class="w3-container w3-theme">
 		<p>Funnier :)</p>
 	</footer>
 
