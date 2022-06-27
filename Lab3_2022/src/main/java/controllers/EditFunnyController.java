@@ -39,7 +39,6 @@ public class EditFunnyController extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		Funny funny = new Funny();
-		System.out.println("EditFunnyController.java");
 		ManageFunnies funnyManager = new ManageFunnies();
 		
 		try {
@@ -48,9 +47,6 @@ public class EditFunnyController extends HttpServlet {
 			funnyManager.updateFunny(funny.getId(), funny.getContent());
 			funnyManager.finalize();
 			
-//			tweetManager.updateTweet(tweet.getId(),tweet.getContent());
-//			tweetManager.finalize();
-//	   
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}

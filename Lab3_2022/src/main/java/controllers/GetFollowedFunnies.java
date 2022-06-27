@@ -72,7 +72,7 @@ public class GetFollowedFunnies extends HttpServlet {
 			funnyManager.finalize();
 			userManager.finalize();
 		}
-		System.out.println("Is user admin? (i'm getfollowedfunnies) -->" + user.isAdmin());
+
 		request.setAttribute("isAdmin", isAdmin);
 		request.setAttribute("user",user);
 		request.setAttribute("funnies",funnies);
