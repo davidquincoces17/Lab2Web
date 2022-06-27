@@ -6,7 +6,7 @@
 
 
 
-<a href="MainController"> <img src="imgs/FunnierSmall.png" alt= "logo" style="height:80px; margin-bottom:20px"></a>
+<a href="MainController"> <img src="imgs/FunnierSmall.png" alt= "logo" style="height:80px; margin-bottom:20px; margin-top:20px"></a>
 
 
 <form action="RegisterController" method="post" id="myform">
