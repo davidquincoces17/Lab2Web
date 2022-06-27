@@ -182,7 +182,7 @@ $(document).ready(function(){
 	<!-- End Content -->
 	<!-- Footer -->
 	<footer class="w3-container w3-theme">
-	  <p> Universitat Pompeu Fabra </p>
+	  <p> Funnier :) </p>
 	</footer>
 	
 	<script>
