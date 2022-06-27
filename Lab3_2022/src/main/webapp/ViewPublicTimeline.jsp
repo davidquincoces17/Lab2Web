@@ -38,8 +38,6 @@
 	});
  
 </script>
-
-<div><p>Hello</p></div>
  
 <div id="iterator">
 </div>

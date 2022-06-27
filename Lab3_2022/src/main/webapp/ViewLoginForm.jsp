@@ -28,7 +28,7 @@
 		<label class="w3-text-red"style="padding-left: 10px"> Don't have an account? You can register </label>
 		<a class="w3-text-red menu" id="RegisterController" href=#><b>here</b></a><br><br>
 		<label class="w3-text-red"><small>Don't want to register? You can check the </small></label>
-		<a class="w3-text-red menu" id="RegisterController" href=#><b><small>global timeline</small></b></a>
+		<a class="w3-text-red menu" id="NoLoginController" href=#><b><small>global timeline</small></b></a>
 		<label class="w3-text-red"><small> with the most recent funnies!</small></label>
 
 		

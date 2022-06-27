@@ -11,12 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import managers.ManageFunnies;
 import managers.ManageUsers;
 import models.Funny;
-import models.User;
 
 @WebServlet("/GetAllFunnies")
 public class GetAllFunnies extends HttpServlet {
@@ -44,7 +41,7 @@ public class GetAllFunnies extends HttpServlet {
 		ManageUsers userManager = new ManageUsers();
 		
 		ManageFunnies funnyManager = new ManageFunnies();
-		funnies = funnyManager.getFunnySearch("",0,20);
+		funnies = funnyManager.getFunnySearch("%%",0,20);
 		
 		Integer value = 0;
 		for (Funny f: funnies) {

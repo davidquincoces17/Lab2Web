@@ -15,11 +15,10 @@
    <p style="overflow-wrap: break-word"> ${t.content} </p>
 
    <a style="margin-bottom:8px">${funs[loop.index]}</a>
-   <button  type="button" class="likeFunny w3-button w3-theme w3-margin-bottom w3-circle" style="vertical-align:bottom"><img src="${imgStateFun[loop.index]}" alt= "fun" style="height:24px; width:24px"></button>
+      <button  type="button" class="likeFunny w3-button w3-theme w3-margin-bottom w3-circle" style="vertical-align:bottom"><img src="imgs/fun1.png" alt= "fun" style="height:24px; width:24px"></button> 
    <a style="margin-top:-30px">${unfuns[loop.index]}</a>
-   <button type="button" class="dislikeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="${imgStateUnfun[loop.index]}" alt= "unfun" style="height:24px; width:24px"></button>
-   <button type="button" class="replyFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-reply"></i> &nbsp;Reply</button>
-
+      <button type="button" class="dislikeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="imgs/unfun1.png" alt= "unfun" style="height:24px; width:24px"></button>
+   
  </div>
 </c:forEach>
 
