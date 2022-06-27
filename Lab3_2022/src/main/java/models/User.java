@@ -63,7 +63,6 @@ public class User implements java.io.Serializable {
 		} else {
 			error[1]=true;
 		}
-		System.out.println(username);
 	}
 	
 	public String getMail() {
@@ -90,9 +89,7 @@ public class User implements java.io.Serializable {
 			
 		} else {
 			error[3]=true;
-		}
-		System.out.println(mail);
-		
+		}		
 	}
 	
 	public String getPwd1() {
@@ -110,7 +107,6 @@ public class User implements java.io.Serializable {
 		} else {
 			error[4]=true;
 		}
-		System.out.println(pwd1);
 	}
 	
 	public String getPwd2() {
@@ -128,8 +124,6 @@ public class User implements java.io.Serializable {
 		} else {
 			error[5]=true;
 		}
-		System.out.println(pwd2);
-
 	}
 	
 	public String getNickname() {
@@ -142,7 +136,6 @@ public class User implements java.io.Serializable {
 		}else {
 			error[6] = true;
 		}
-		System.out.println(nickname);
 	}
 
 	public String getGender() {
@@ -160,7 +153,6 @@ public class User implements java.io.Serializable {
 		}else {
 			error[7] = true;
 		}
-		System.out.println(gender);
 	}
 
 	public String getBirth() {
@@ -183,7 +175,6 @@ public class User implements java.io.Serializable {
 		} else {
 		    error[8] = true;
 		}
-		System.out.println(birth);
 	}
 
 	public String getProfilePhoto() {
