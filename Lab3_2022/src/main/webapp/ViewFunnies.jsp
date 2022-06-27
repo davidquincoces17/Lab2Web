@@ -18,7 +18,7 @@
    <button  type="button" class="likeFunny w3-button w3-theme w3-margin-bottom w3-circle" style="vertical-align:bottom"><img src="${imgStateFun[loop.index]}" alt= "fun" style="height:24px; width:24px"></button>
    <a style="margin-top:-30px">${unfuns[loop.index]}</a>
    <button type="button" class="dislikeFunny w3-button w3-theme w3-margin-bottom w3-circle"><img src="${imgStateUnfun[loop.index]}" alt= "unfun" style="height:24px; width:24px"></button>
-   <button type="button" class="replyFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-reply"></i> &nbsp;Reply</button>
+   <button onclick="alertFunction()" type="button" class="replyFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-reply"></i> &nbsp;Reply</button>
    
 <%-- 	<c:if test="${user.username.equals(t.authorUsername)}"> --%>
 <!--    	<button type="button" class="editFunny w3-button w3-theme w3-margin-bottom" style="border-radius:8px"><i class="fa fa-edit"></i> &nbsp;Edit</button>   	 -->
@@ -43,5 +43,13 @@
 
  </div>
 </c:forEach>
+
+<script>
+
+function alertFunction(){
+	alert("This feature is not available yet, our team is working on it...");
+}
+
+</script>
 
 
