@@ -32,7 +32,6 @@ public class LogoutController extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		System.out.println("LogoutController: deleting session and forwarding to ViewLogoutDone");
-
 		
 		if (session!=null) {
 			session.invalidate();

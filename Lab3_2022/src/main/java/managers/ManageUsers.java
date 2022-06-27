@@ -164,7 +164,6 @@ public class ManageUsers {
 	
 	/*Check if all the fields for Login are filled correctly */
 	public boolean isLoginComplete(User user) {
-		System.out.println(user);
 	    return(hasValue(user.getMail()) &&
 	    	   hasValue(user.getPwd1()) );
 	}
@@ -198,8 +197,6 @@ public class ManageUsers {
 			e.printStackTrace();
 			can = false;
 		}
-		System.out.print(can);
-		System.out.print(user);
 		return Pair.of(can, user);
 	}
 	

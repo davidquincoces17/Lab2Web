@@ -38,7 +38,6 @@ public class NoLoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.print("NoLoginController: ");
 		HttpSession session = request.getSession();
 		session.setAttribute("no_user", true);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewPublicTimeline.jsp");

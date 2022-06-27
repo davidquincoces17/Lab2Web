@@ -38,8 +38,6 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.print("LoginController: ");
-
 		User user = new User();
 		ManageUsers manager = new ManageUsers();
 		Pair<Boolean, User> pair = null;
@@ -52,7 +50,6 @@ public class LoginController extends HttpServlet {
 				pair = manager.canLogin(user);
 
 				if (pair.getLeft()) {
-					System.out.println("login OK, forwarding to ViewLoginDone ");
 					HttpSession session = request.getSession();
 					session.setAttribute("user", pair.getRight());
 					RequestDispatcher dispatcher = request.getRequestDispatcher("ViewOwnTimeline.jsp");
@@ -60,8 +57,6 @@ public class LoginController extends HttpServlet {
 				}
 
 			} else {
-
-				System.out.println("user is not logged, forwarding to ViewLoginForm ");
 				request.setAttribute("user", user);
 				request.setAttribute("failed", true);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
