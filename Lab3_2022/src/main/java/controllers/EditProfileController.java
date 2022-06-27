@@ -45,7 +45,6 @@ public class EditProfileController extends HttpServlet {
 		
 		try {
 			BeanUtils.populate(toUpdate, request.getParameterMap());
-			System.out.println("New info ==> " + toUpdate);
 
 			if(toUpdate.getPwd1().equals(toUpdate.getPwd2())) { //Re-comprovem al servidor que hagi escrit la nova password correctament als dos fields
 				userManager.updateUser(user.getId(), toUpdate.getPwd1(), toUpdate.getNickname(), toUpdate.getGender(), toUpdate.getBirth());

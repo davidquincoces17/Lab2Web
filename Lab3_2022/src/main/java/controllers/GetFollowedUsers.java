@@ -43,7 +43,7 @@ public class GetFollowedUsers extends HttpServlet {
 		if (session != null || user != null) {
 		
 			ManageUsers userManager = new ManageUsers();
-			users = userManager.getFollowedUsers(user.getId(),0,8);
+			users = userManager.getFollowedUsers(user.getId(),0,20);
 			userManager.finalize();
 		
 		}

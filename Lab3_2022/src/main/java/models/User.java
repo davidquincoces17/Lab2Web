@@ -12,17 +12,6 @@ import managers.ManageUsers;
 
 public class User implements java.io.Serializable {
 	
-	/*
-	 CREATE TABLE `users` (
-  		`usr` varchar(255) NOT NULL,
-  		`mail` varchar(255) NOT NULL,
-  		`pwd` varchar(255) NOT NULL,
-  		PRIMARY KEY (`usr`),
-  		UNIQUE KEY `mail` (`mail`)
-	 ); 
-	 * 
-	 */
-	
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
@@ -55,12 +44,6 @@ public class User implements java.io.Serializable {
 	}
 
 	public void setUsername(String username) {
-		/* We can simulate that a user with the same name exists in our DB and mark error[0] as true  */
-		//TODO: regex
-		//error[0] = true;
-		//this.user = user;
-		//System.out.println(user);
-		//this.username = username;
 		
 		String regex = "^[a-zA-Z\\d_]{1,10}$";
 		Pattern pattern = Pattern.compile(regex);
@@ -88,7 +71,7 @@ public class User implements java.io.Serializable {
 	}
 	
 	public void setMail(String mail) {
-		//TODO: mail length
+		/* TODO check restriction with pattern */
 		String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(mail);

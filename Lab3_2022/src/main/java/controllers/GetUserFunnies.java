@@ -73,7 +73,6 @@ public class GetUserFunnies extends HttpServlet {
 			funnyManager.finalize();
 		}
 
-		System.out.println("Is user admin? (i'm getuserfunnies) -->" + user.isAdmin());
 		request.setAttribute("isAdmin", isAdmin);
 		request.setAttribute("user",user);
 		request.setAttribute("funnies",funnies);
