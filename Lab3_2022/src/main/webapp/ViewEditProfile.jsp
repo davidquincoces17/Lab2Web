@@ -12,9 +12,9 @@
 </form>
 <br>
 <form action="EditProfileController" method="post" id="editProfilePicture">
-  <label class="w3-text-red" for="pwd1"> Password: </label><br>
+  <label class="w3-text-red" for="pwd1"> New password: </label><br>
   <input class="w3-input w3-border w3-light-grey" type="password" id="pwd1" name="pwd1" placeholder="Password" value="${model.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&_+\-*\/#])[A-Za-z\d@$!%?&_+\-*\/#]{8,50}$"><br>
-  <label class="w3-text-red" for="pwd2"> Confirm Password: </label><br>
+  <label class="w3-text-red" for="pwd2"> Confirm new Password: </label><br>
   <input class="w3-input w3-border w3-light-grey" type="password" id="pwd2" name="pwd2" placeholder="Confirm Password" value="${model.pwd2}" required><br>
   <label class="w3-text-red" for="nickname"> Nickname:</label><br>
   <input class="w3-input w3-border w3-light-grey" type="text" id="nickname" name="nickname" placeholder="Nickname" value="${model.nickname}" required pattern="^.{1,30}$"><br>
