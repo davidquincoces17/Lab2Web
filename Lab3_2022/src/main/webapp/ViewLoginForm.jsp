@@ -4,7 +4,7 @@
 
 
 
-<div style="background-color: #fff5ee; border-radius: 5px; margin-right:25%;margin-top:20px">
+<div style="background-color: #fff5ee; border-radius: 5px; margin-right:25%;margin-top:20px; border:dashed 1px #F5B354">
 	<a href="MainController"> <img src="imgs/FunnierSmall.png"
 		alt="logo" style="height: 80px; margin-bottom: 20px; margin-top: 20px; margin-left:20px"></a><br>
 
@@ -28,7 +28,7 @@
 		<label class="w3-text-red"style="padding-left: 10px"> Don't have an account? You can register </label>
 		<a class="w3-text-red menu" id="RegisterController" href=#><b>here</b></a><br><br>
 		<label class="w3-text-red"><small>Don't want to register? You can check the </small></label>
-		<a class="w3-text-red menu" id="RegisterController" href=#><b><small>global timeline</small></b></a>
+		<a class="w3-text-red menu" id="NoLoginController" href=#><b><small>global timeline</small></b></a>
 		<label class="w3-text-red"><small> with the most recent funnies!</small></label>
 
 		
