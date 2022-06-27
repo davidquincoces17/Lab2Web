@@ -107,7 +107,7 @@ public class ManageUsers {
 				user.setUsername(rs.getString("username"));
 				user.setMail(rs.getString("email"));
 				user.setNickname(rs.getString("nickname"));
-				user.setGender(rs.getString("gender")); //TODO hauriem de rebre gender com a Int no com a string
+				user.setGender(rs.getString("gender"));
 				user.setProfilePhoto(rs.getString("profilePhoto"));
 				if(rs.getInt("isAdmin")==1) {
 					user.setAdmin(true);
@@ -289,10 +289,11 @@ public class ManageUsers {
 
 	/* Update password, nickname, gender and birth for a given user ID */
 	public void updateUser(int id, String pwd1, String nickname, String gender, String birth) {
-		// La query serà: "UPDATE user SET user.password='Hola123%', user.nickname='david', user.gender='0', user.birth='2000-02-07' WHERE user.id='1';"
-		System.out.println("SIIIII" + id+pwd1+nickname+gender+birth);
 		String query = "UPDATE user SET user.password= ?, user.nickname= ?, user.gender= ?, user.birth= ? WHERE user.id= ?;";
 		PreparedStatement statement = null;
+		int test = Integer.parseInt(gender);
+		test --;
+		gender = String.valueOf(test);
 		try {
 			statement = db.prepareStatement(query);
 			statement.setString(1, pwd1);

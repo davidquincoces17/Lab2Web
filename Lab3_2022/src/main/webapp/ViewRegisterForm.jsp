@@ -4,7 +4,7 @@
 
 
 
-<div style="background-color: #fff5ee; border-radius: 5px; margin-right:25%;margin-top:20px; border:dashed 1px #F5B354">
+<div style="background-color: #fff5ee; border-radius: 5px; margin-right:25%;margin-top:20px;margin-bottom:30px; border:dashed 1px #F5B354">
 
 <a href="MainController"> <img src="imgs/FunnierSmall.png" alt= "logo" style="height: 80px; margin-bottom: 20px; margin-top: 20px; margin-left:20px"></a>
 
